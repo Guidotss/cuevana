@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { FC } from "react"
-import { Navbar } from "@/components/ui";
+import { Footer, Navbar } from "@/components/ui";
 
 interface Props {
     children: React.ReactNode; 
@@ -40,7 +40,7 @@ export const FilmsLayout:FC<Props> = ({ children,title,pageDescription,imageFull
         </main>
 
         <footer>
-            {/* Footer */}
+            <Footer/>
         </footer>
     </>
   )
