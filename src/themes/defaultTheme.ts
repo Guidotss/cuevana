@@ -12,7 +12,7 @@ export const defaultTheme = createTheme({
         MuiAppBar:{
             defaultProps:{
                 elevation: 0,
-                position: "fixed",
+                position: "static",
             },
             styleOverrides:{
                 root:{
@@ -32,6 +32,13 @@ export const defaultTheme = createTheme({
             }
 
             
+        },
+        MuiToolbar:{
+            styleOverrides:{
+                root:{
+                    margin:'20px 176px'
+                }
+            }
         }
     }
     

@@ -23,7 +23,11 @@ export const FilmsLayout:FC<Props> = ({ children,title,pageDescription,imageFull
             <meta name="author" content="Guido Olguin" />
         </Head>
 
-        <nav>
+        <nav
+            style={{
+                
+            }}
+        >
             <Navbar/>
         </nav>
 

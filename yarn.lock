@@ -1831,7 +1831,7 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
 
-next@13.2.1:
+next@^13.2.1:
   version "13.2.1"
   resolved "https://registry.yarnpkg.com/next/-/next-13.2.1.tgz#34d823f518632b36379863228ed9f861c335b9c0"
   integrity sha512-qhgJlDtG0xidNViJUPeQHLGJJoT4zDj/El7fP3D3OzpxJDUfxsm16cK4WTMyvSX1ciIfAq05u+0HqFAa+VJ+Hg==
@@ -2058,6 +2058,11 @@ react-dom@18.2.0:
   dependencies:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
+
+react-hook-form@^7.43.2:
+  version "7.43.2"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.43.2.tgz#d8ff71956dc3de258dce19d4b1c7e1c6a0188e67"
+  integrity sha512-NvD3Oe2Y9hhqo2R4I4iJigDzSLpdMnzUpNMxlnzTbdiT7NT3BW0GxWCzEtwPudZMUPbZhNcSy1EcGAygyhDORg==
 
 react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"

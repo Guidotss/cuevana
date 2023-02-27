@@ -1,3 +1,39 @@
 body{
   background-color: #080f28;
 }
+
+.bounce-in{
+  animation: bounce-in 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+@keyframes bounce-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (min-width: 1200px){
+  ::-webkit-scrollbar {
+    width: .7rem;
+    height: .7rem;
+  }
+}
+
+@media (min-width: 1200px){
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg,#00bcff,#007aff);
+  }
+}
+@media (min-width: 1200px){
+  ::-webkit-scrollbar-track {
+    background-color: #1e2747;
+  }
+}
