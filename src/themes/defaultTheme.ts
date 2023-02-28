@@ -11,12 +11,14 @@ export const defaultTheme = createTheme({
         },
         MuiAppBar: {
             defaultProps: {
-                elevation: 0,
+                elevation: 99,
                 position: "static",
+                
             },
             styleOverrides: {
                 root: {
                     backgroundColor: "inherit",
+                    zIndex: 99,
                 }
             }
         },

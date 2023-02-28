@@ -13,7 +13,7 @@ import {
   IconButton,
   Grid,
 } from "@mui/material";
-import { SearchOutlined, KeyboardArrowDownOutlined } from "@mui/icons-material";
+import { SearchOutlined, KeyboardArrowDownOutlined, Opacity } from "@mui/icons-material";
 import { FilmsMenu } from "./FilmsMenu";
 import { GenreMenu } from './GenreMenu';
 import { SeriesMenu } from "./SeriesMenu";
@@ -27,11 +27,12 @@ export const Navbar = () => {
 
   const router = useRouter();
 
+  console.log(router.asPath)
   return (
     <AppBar
       sx={{
         background: "linear-gradient(180deg,#141a32 1%,rgba(20,26,50,0))",
-        backgroundColor:`${router.asPath !== '/' ? '#141a32' : 'transparent'}`
+        backgroundColor:`${(router.asPath === '/inicio' || router.asPath === '/') ? 'transparen' : '#141a32'}`, 
       }}
     > 
       

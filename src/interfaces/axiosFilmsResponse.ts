@@ -1,8 +1,6 @@
-import { FilmsSearchResults } from "./filmsResults"
+import { FilmsResults } from "./filmsResults"
 
-export interface AxiosFilmsSearchResponse {
-    data:{
-        page:number;
-        results:FilmsSearchResults[];   
-    }
+export interface AxiosFilmsResponse {
+    page:number;
+    results:FilmsResults[];  
 }

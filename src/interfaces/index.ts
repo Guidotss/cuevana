@@ -1,4 +1,3 @@
-export * from './AxiosFilmsResponse';
+export * from './axiosFilmsResponse';
 export * from './filmsResults';
-export * from './topFilms';
-export * from './axiosTopFilmsResponse';
+export * from './filmsImages';

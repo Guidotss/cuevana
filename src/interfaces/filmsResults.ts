@@ -1,40 +1,18 @@
-export interface FilmsSearchResults {
+import { GenreMenu } from '../components/ui/GenreMenu';
+export interface FilmsResults {
+    id:number;
     title:string;
-    imdbid:string; 
-    genre:genre[];
-    type:string; 
-    released:number;
-    imageurl?:string[];
-    synopsis?:string;
+    original_title:string;
+    original_language:string;
+    overview:string;
+    popularity:number;
+    vote_count:number;
+    video:boolean;
+    vote_average:number;
+    total_pages:number;
+    total_results:number;
+    adults:boolean;
+    backdrop_path:string;    
+    genre:number[];
+    released_date:number;
 }
-
-type genre = 
-    |"Action" 
-    | "Adult"  
-    | "Adventure" 
-    | "Animation" 
-    | "Biography" 
-    | "Comedy" 
-    | "Crime" 
-    | "Documentary" 
-    | "Drama" 
-    | "Family"
-    | "Fantasy"
-    | "Game-Show" 
-    | "History"
-    | "Horror"
-    | "Music"
-    | "Musical"
-    | "Mystery"
-    | "News"
-    | "Reality-TV"
-    | "Romance"
-    | "Sci-Fi"
-    | "Short"
-    | "Sport"
-    | "Talk-Show"
-    | "Thriller"
-    | "War"
-    | "Western"
-
-
