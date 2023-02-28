@@ -2,44 +2,44 @@ import { createTheme } from "@mui/material"
 
 
 export const defaultTheme = createTheme({
-    components:{
-        MuiLink:{
-            defaultProps:{
+    components: {
+        MuiLink: {
+            defaultProps: {
                 underline: "none",
                 color: "white",
             }
         },
-        MuiAppBar:{
-            defaultProps:{
+        MuiAppBar: {
+            defaultProps: {
                 elevation: 0,
                 position: "static",
             },
-            styleOverrides:{
-                root:{
+            styleOverrides: {
+                root: {
                     backgroundColor: "inherit",
                 }
             }
         },
-        MuiTextField:{
-            defaultProps:{
+        MuiTextField: {
+            defaultProps: {
                 variant: "outlined",
                 size: "small",
             },
-            styleOverrides:{
-                root:{
-                    
+            styleOverrides: {
+                root: {
+
                 }
             }
 
-            
+
         },
-        MuiToolbar:{
-            styleOverrides:{
-                root:{
-                    margin:'20px 176px'
+        MuiToolbar: {
+            styleOverrides: {
+                root: {
+                    margin: '15px 165px'
                 }
             }
         }
     }
-    
+
 })

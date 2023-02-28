@@ -33,7 +33,8 @@ export const Navbar = () => {
         background: "linear-gradient(180deg,#141a32 1%,rgba(20,26,50,0))",
         backgroundColor:`${router.asPath !== '/' ? '#141a32' : 'transparent'}`
       }}
-    >
+    > 
+      
       <Toolbar>
         <Box display="flex" justifyContent="center" alignItems="center">
           <Image
