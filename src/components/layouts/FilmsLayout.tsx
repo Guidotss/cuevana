@@ -27,14 +27,13 @@ export const FilmsLayout:FC<Props> = ({ children,title,pageDescription,imageFull
             <Navbar/>
         </nav>
 
-        <main
-        >
+        <main>
             { children }
         </main>
-
+{/* 
         <footer>
             <Footer/>
-        </footer>
+        </footer> */}
     </>
   )
 }

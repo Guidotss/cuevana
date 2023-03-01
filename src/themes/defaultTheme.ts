@@ -11,14 +11,14 @@ export const defaultTheme = createTheme({
         },
         MuiAppBar: {
             defaultProps: {
-                elevation: 99,
+                elevation: 0,
                 position: "static",
                 
             },
             styleOverrides: {
                 root: {
                     backgroundColor: "inherit",
-                    zIndex: 99,
+                    zIndex: 1,
                 }
             }
         },
@@ -27,18 +27,14 @@ export const defaultTheme = createTheme({
                 variant: "outlined",
                 size: "small",
             },
-            styleOverrides: {
-                root: {
-
-                }
-            }
-
 
         },
         MuiToolbar: {
             styleOverrides: {
                 root: {
-                    margin: '15px 165px'
+                    margin:'15px 30px ',
+                    display: "flex",
+                    justifyContent: "space-between",
                 }
             }
         }
