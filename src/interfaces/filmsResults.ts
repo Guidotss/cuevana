@@ -14,5 +14,6 @@ export interface FilmsResults {
     adults:boolean;
     backdrop_path:string;    
     genre:number[];
-    released_date:number;
+    release_date:number;
+    poster_path:string;
 }
