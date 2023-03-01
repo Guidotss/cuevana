@@ -17,7 +17,7 @@ export const HeaderImage: FC<Props> = ({ film }) => {
             width: "100%",
             height: "600px",
             zIndex: -1,
-            '&::after': {
+            '&::after':{
               background:'linear-gradient(180deg,rgba(8,15,40,0) 0,#080f28)',
               content:"",
               position:'absolute',
