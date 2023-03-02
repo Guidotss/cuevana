@@ -1,10 +1,8 @@
-import { Box, Chip, Grid, Typography } from "@mui/material"
 import { useState, useEffect } from 'react';
-import { useMovies } from '@/hooks/useMovies';
 import Image from "next/image";
-import { Posters } from '../../interfaces/filmsImages';
-import { display } from '@mui/system';
-
+import { Box, Chip, Grid, Typography } from "@mui/material"
+import { PlayCircleOutlineOutlined } from '@mui/icons-material';
+import { useMovies } from '@/hooks/useMovies';
 
 
 
@@ -105,12 +103,31 @@ export const FilmsSelector = () => {
         </Box>
         <Grid container gap={5} sx={{mt:3}}>
             {movies.map((movie) => (
-                <Grid item key={movie.id}>
+                <Grid 
+                    item 
+                    key={movie.id}
+                    sx={{
+                        '&:hover':{
+                            '& > div':{
+                                opacity: 0.5
+                            },
+                            '& > div > div':{
+                                opacity: 1,
+                            },
+                            '& > div > div > div':{
+                                opacity: 1,
+                            },
+                            '& > div > div > svg':{
+                                display: "block",
+                            }
+
+                        }
+                    }}
+                >
                     <Box
                         sx={{
                             '&:hover':{
                                 cursor: "pointer",
-                                
                             }
                         }}
                     >
@@ -133,6 +150,18 @@ export const FilmsSelector = () => {
                                 height: 20,
                             }}
                         />
+                        <Box display="flex" justifyContent="center" alignItems="center">
+                            <PlayCircleOutlineOutlined
+                                sx={{
+                                    color:"white",
+                                    position: "absolute",
+                                    zIndex: 1,
+                                    mt:-20,
+                                    fontSize:90,
+                                    display: "none",
+                                }}
+                            />
+                        </Box>
                     </Box>
                     <Box
                         display= "flex"
