@@ -2,7 +2,7 @@ import { FC } from "react";
 import NextLink from "next/link";
 import Image from "next/image";
 import { Box, capitalize, Chip, Link, Typography } from "@mui/material";
-import { FilmsResults } from "@/interfaces/filmsResults";
+import { FilmsResults } from "@/interfaces/trendingResults";
 
 interface Props {
   film: FilmsResults;
@@ -35,9 +35,9 @@ export const HeaderImage: FC<Props> = ({ film }) => {
         <Image
           src={`https://image.tmdb.org/t/p/original${film.backdrop_path}`}
           alt={film.title}
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
+          fill
+          loading="eager"
+          priority
           quality={100}
           style={{
             zIndex: -1,

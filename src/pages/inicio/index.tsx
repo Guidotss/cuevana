@@ -1,20 +1,23 @@
+import NextLink from 'next/link';
 import { GetStaticProps, NextPage } from 'next'
-import { FilmsLayout } from '../../components/layouts';
-import { HeaderImage } from '../../components/ui/HeaderImage';
-import { Box, Grid, Typography } from '@mui/material';
-import { filmsApi } from '../../api';
-import { AxiosFilmsResponse, FilmsResults } from '../../interfaces';
+import { FilmsLayout } from '@/components/layouts';
+import { HeaderImage } from '@/components/ui/HeaderImage';
+import { Box, Grid, Link, Typography } from '@mui/material';
+import { filmsApi } from '@/api';
+import { AxiosTrendingResponse, TrendingResults } from '@/interfaces';
+import { SeriesList } from '@/components/ui'; 
+
 
 interface Props {
-  films: FilmsResults[]
+  films: TrendingResults[]; 
+  series: TrendingResults[];
 }
 
-export const HomePage:NextPage<Props>  = ({ films }) => {
-
+export const HomePage:NextPage<Props>  = ({ films,series }) => {
+  
   const mostPopularFilm = films.filter((film) => film.popularity > 100)[0];
-  console.log(mostPopularFilm);
-  
-  
+  const mostPopularSeries = series.filter((serie) => serie.popularity > 100).slice(0,4);
+
   return (
     <FilmsLayout title="Home - Guivana" pageDescription="Home - Guivana">
       <Box>
@@ -37,18 +40,59 @@ export const HomePage:NextPage<Props>  = ({ films }) => {
         </Typography>
       </Box>
       <Box flex={1}/>
-        <Grid container>
-          <Grid item xs={7}>
-            <Typography
-              variant="h5"
-              component="h5"
-              fontWeight={600}
-              color="#8da0bc"
-            >
-              Episodios
-            </Typography>
+        <Grid 
+          container  
+          sx={{
+            ml:10
+          }}
+        >
+          <Grid 
+            item 
+            xs={4} 
+          >
+            <Box>
+              <Typography
+                variant="h4"
+                component="h4"
+                fontWeight={600}
+                color="#8da0bc"
+                letterSpacing={-1}
+                sx={{
+                  mb:3,
+                  ml:1
+                }}
+              >
+                Episodios
+              </Typography>
+              <NextLink 
+                href="/episodios"
+                passHref
+                legacyBehavior
+                
+              >
+                <Link
+                  sx={{
+                    ml:2,
+                    backgroundColor:'#007aff',
+                    borderRadius:'10px',
+                    height:'40px',
+                    width:'130px',
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      ml:1.5,
+                      mt:1
+                    }}
+                  >
+                    Ver mas series
+                  </Typography>
+                </Link>
+              </NextLink>
+            </Box>
             {/* //TODO: Crear componente de episodios */ }
-
+            <SeriesList series={ mostPopularSeries }/>
+            
           </Grid>
         </Grid>
       <Box flex={1}/>
@@ -61,12 +105,14 @@ export const HomePage:NextPage<Props>  = ({ films }) => {
 export const getStaticProps: GetStaticProps = async (ctx) => {
 
   try{
-    const { data } = await filmsApi.get<AxiosFilmsResponse>(`/popular?api_key=${process.env.API_KEY_TMDB}`);
-    
+
+    const topRatedFilms = await filmsApi.get<AxiosTrendingResponse>(`trending/movie/day?api_key=${process.env.API_KEY_TMDB}`);
+    const topRatedSeries = await filmsApi.get<AxiosTrendingResponse>(`trending/tv/day?api_key=${process.env.API_KEY_TMDB}`); 
 
     return {
       props: {
-        films: data.results
+        films: topRatedFilms.data.results,
+        series:topRatedSeries.data.results
       }
     }
 

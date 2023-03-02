@@ -47,7 +47,7 @@ export const FilmsMenu: FC<Props> = ({ isOpen }) => {
                 }}
               >
                 <NextLink 
-                  href={`/peliculas/${category === 'Tendencias semanal' ? '/tendencias/semanal' : category === 'Tendencias diaria' ? '/tendendias/diaria' : category=== 'Últimas publicadas' ? '/' : category.toLowerCase()}`} 
+                  href={`/peliculas/${category === 'Tendencias semanal' ? 'tendencias/semanal' : category === 'Tendencias diaria' ? ' tendendias/diaria' : category=== 'Últimas publicadas' ? '/' : category.toLowerCase()}`} 
                   passHref legacyBehavior>
                   <Link
                     sx={{

@@ -1,6 +1,8 @@
-import { GenreMenu } from '../components/ui/GenreMenu';
-export interface FilmsResults {
+
+
+export interface TrendingResults {
     id:number;
+    name?:string; 
     title:string;
     original_title:string;
     original_language:string;
