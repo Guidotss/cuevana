@@ -2,10 +2,10 @@ import { FC } from "react";
 import NextLink from "next/link";
 import Image from "next/image";
 import { Box, capitalize, Chip, Link, Typography } from "@mui/material";
-import { FilmsResults } from "@/interfaces/trendingResults";
+import { TrendingResults } from "@/interfaces/trendingResults";
 
 interface Props {
-  film: FilmsResults;
+  film: TrendingResults;
 }
 
 export const HeaderImage: FC<Props> = ({ film }) => {
@@ -42,6 +42,7 @@ export const HeaderImage: FC<Props> = ({ film }) => {
           style={{
             zIndex: -1,
             marginTop: "-6.5rem",
+            objectFit: "cover",
           }}
         />
       </Box>
@@ -50,7 +51,8 @@ export const HeaderImage: FC<Props> = ({ film }) => {
           sx={{
             display: "flex",
             "&:hover": {
-              transform: "scale(1.01)",
+              transform: "translateX(0.1rem) translateY(-0.1rem)",
+              transition:'all 0.1s ease-in-out'
             },
           }}
         >
@@ -103,7 +105,7 @@ export const HeaderImage: FC<Props> = ({ film }) => {
             fontSize="1.225rem"
             fontWeight={300}
           >
-            {film.vote_average}/
+            {film.vote_average.toFixed(1)}/
           </Typography>
           <Typography
             variant="body2"

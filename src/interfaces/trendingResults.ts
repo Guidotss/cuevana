@@ -3,7 +3,7 @@
 export interface TrendingResults {
     id:number;
     name?:string; 
-    title:string;
+    title?:string;
     original_title:string;
     original_language:string;
     overview:string;
@@ -16,6 +16,7 @@ export interface TrendingResults {
     adults:boolean;
     backdrop_path:string;    
     genre:number[];
-    release_date:number;
+    release_date?:number;
     poster_path:string;
+    first_air_date?:string;
 }
