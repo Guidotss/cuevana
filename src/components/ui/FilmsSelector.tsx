@@ -1,24 +1,20 @@
-import { useState, useEffect } from 'react';
-import Image from "next/image";
-import { Box, Chip, Grid, Typography } from "@mui/material"
-import { PlayCircleOutlineOutlined } from '@mui/icons-material';
+import { useState } from 'react';
+import { Box, Grid, Typography } from "@mui/material"
 import { useMovies } from '@/hooks/useMovies';
-
+import { TrendingResults } from '@/interfaces/trendingResults';
+import { FilmsInfoCard } from './FilmsInfoCard';
 
 
 
 
 export const FilmsSelector = () => {
-
     const [ isSelected, setIsSelected ] = useState({
         last: true,
         trendsMovies: false,
         upcoming: false
     });
-    const [url, setUrl] = useState('movie/top_rated')    
-    const { movies } = useMovies(url);
-
-   
+    const [url, setUrl] = useState('movie/top_rated');
+    const { movies } = useMovies(url,0);
 
   return (
     <Box>
@@ -34,12 +30,12 @@ export const FilmsSelector = () => {
                 </Typography>
             </Box>
             <Box
+                gap={2}
                 display="flex"
                 alignItems="center"
                 sx={{
                     ml:5
                 }}
-                gap={2}
             >
                 <Typography 
                     onClick={() => {
@@ -101,84 +97,14 @@ export const FilmsSelector = () => {
                 </Typography>
             </Box>
         </Box>
-        <Grid container gap={5} sx={{mt:3}}>
-            {movies.map((movie) => (
-                <Grid 
-                    item 
-                    key={movie.id}
-                    sx={{
-                        '&:hover':{
-                            '& > div':{
-                                opacity: 0.5
-                            },
-                            '& > div > div':{
-                                opacity: 1,
-                            },
-                            '& > div > div > div':{
-                                opacity: 1,
-                            },
-                            '& > div > div > svg':{
-                                display: "block",
-                            }
-
-                        }
-                    }}
-                >
-                    <Box
-                        sx={{
-                            '&:hover':{
-                                cursor: "pointer",
-                            }
-                        }}
-                    >
-                        <Image
-                            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                            alt={movie.title!}
-                            width={230}
-                            height={300}
-                            style={{
-                                borderRadius: 4,
-                            }}
-                        />
-                        <Chip
-                            label={`${movie.release_date}`.split("-")[0]}
-                            color="primary"
-                            sx={{
-                                position: "absolute",
-                                mt:34,
-                                ml:-7,
-                                height: 20,
-                            }}
-                        />
-                        <Box display="flex" justifyContent="center" alignItems="center">
-                            <PlayCircleOutlineOutlined
-                                sx={{
-                                    color:"white",
-                                    position: "absolute",
-                                    zIndex: 1,
-                                    mt:-20,
-                                    fontSize:90,
-                                    display: "none",
-                                }}
-                            />
-                        </Box>
-                    </Box>
-                    <Box
-                        display= "flex"
-                        justifyContent="center"
-                        sx={{
-                            width: 230,
-                        }}
-                    >
-                        <Typography
-                            color="white"
-                            variant="body2"
-                            fontWeight={300}
-                        >
-                            { movie.title }
-                        </Typography>
-                    </Box>
-                </Grid>
+        <Grid 
+            container 
+            sx={{
+                mt:3,
+            }}
+        >
+            {movies.map((movie:TrendingResults) => (
+               <FilmsInfoCard key={movie.id} movie={movie} /> 
             ))}
         </Grid>
     </Box>

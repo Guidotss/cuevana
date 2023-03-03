@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
 import { TrendingResults } from '@/interfaces/trendingResults';
-import { getMoviesByUrl } from '../utils/getMoviesByUrl';
+import { getMoviesByUrl, getMovieById } from '@/utils';
 
 
 
-export const useMovies = (url:string) => {
-    const [ movies, setMovie ] = useState<TrendingResults[]>([]);
-
+export const useMovies = (url:string, id:number) => {
+    const [ movies, setMovies ] = useState<TrendingResults[]>([]);
+    const [ movie, setMovie ] = useState<TrendingResults>();
     useEffect(() => {
         getMovies(url);
-        console.log(url);
-    },[url])
+        getMovie(id);
+
+    },[url,id])
 
 
     const getMovies = async(url:string) => {
@@ -19,13 +20,22 @@ export const useMovies = (url:string) => {
         if(!movies){
             return;
         }
-        setMovie(movies);
+        setMovies(movies);
+    }
+
+    const getMovie = async(id:number) => {
+        const movie = await getMovieById(id);
+        if(!movie){
+            return;
+        }
+        setMovie(movie)
     }
 
 
 
     return {
         movies,
+        movie,
 
         getMovies
 

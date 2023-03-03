@@ -6,3 +6,5 @@ export * from './Footer';
 export * from './HeaderImage';
 export * from './SeriesList';
 export * from './FilmsSelector';
+export * from './FilmsHoverInfo';
+export * from './FilmsTrendingList';

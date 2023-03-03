@@ -4,9 +4,11 @@ import { AxiosTrendingResponse } from '@/interfaces/axiosTrendingResponse';
 import { TrendingResults } from "@/interfaces";
 
 export const getMoviesByUrl = async (url: string):Promise<TrendingResults[] | undefined> => {
+    if(url === ""){
+        return; 
+    }
     try {
-        
-        const { data } = await filmsApi.get<AxiosTrendingResponse>(`/${url}?api_key=${process.env.NEXT_PUBLIC_API_KEY_TMDB}`);
+        const { data } = await filmsApi.get<AxiosTrendingResponse>(`/${url}?api_key=${process.env.NEXT_PUBLIC_API_KEY_TMDB}&language=es-ES`);
 
         if(!data.results){
             return;

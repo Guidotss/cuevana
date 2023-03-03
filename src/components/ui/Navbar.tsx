@@ -27,7 +27,6 @@ export const Navbar = () => {
 
   const router = useRouter();
 
-  console.log(router.asPath)
   return (
     <AppBar
       sx={{

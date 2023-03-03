@@ -27,7 +27,7 @@ export const SeriesList:FC<Props> = ({ series }) => {
             sx={{
               '&:hover':{
                 cursor: 'pointer',
-                '& > div':{
+                '&':{
                   opacity: 0.5
                 },
                 '& > div > div':{

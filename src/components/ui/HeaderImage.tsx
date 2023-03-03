@@ -9,9 +9,7 @@ interface Props {
 }
 
 export const HeaderImage: FC<Props> = ({ film }) => {
-
-  console.log(film);
-
+  
   return (
     <Box>
       <Box
@@ -34,7 +32,7 @@ export const HeaderImage: FC<Props> = ({ film }) => {
       >
         <Image
           src={`https://image.tmdb.org/t/p/original${film.backdrop_path}`}
-          alt={film.title}
+          alt={film.title!}
           fill
           loading="eager"
           priority

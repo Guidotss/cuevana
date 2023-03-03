@@ -19,4 +19,10 @@ export interface TrendingResults {
     release_date?:number;
     poster_path:string;
     first_air_date?:string;
+    genre_ids:number[];
+    genres:Genres[]; 
+}
+interface Genres { 
+    id:number
+    name:string; 
 }
