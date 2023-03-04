@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import NextLink from "next/link";
@@ -11,7 +11,6 @@ import {
   InputAdornment,
   Input,
   IconButton,
-  Grid,
 } from "@mui/material";
 import { SearchOutlined, KeyboardArrowDownOutlined, Opacity } from "@mui/icons-material";
 import { FilmsMenu } from "./FilmsMenu";
@@ -28,13 +27,7 @@ export const Navbar = () => {
   const router = useRouter();
 
   return (
-    <AppBar
-      sx={{
-        background: "linear-gradient(180deg,#141a32 1%,rgba(20,26,50,0))",
-        backgroundColor:`${(router.asPath === '/inicio' || router.asPath === '/') ? 'transparen' : '#141a32'}`, 
-      }}
-    > 
-      
+    <AppBar> 
       <Toolbar>
         <Box display="flex" justifyContent="center" alignItems="center">
           <Image

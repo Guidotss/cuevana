@@ -2,6 +2,8 @@ import { createTheme } from "@mui/material"
 
 
 export const defaultTheme = createTheme({
+    
+
     components: {
         MuiLink: {
             defaultProps: {

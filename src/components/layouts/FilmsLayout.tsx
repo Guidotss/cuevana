@@ -1,6 +1,9 @@
 import Head from "next/head";
 import { FC } from "react"
 import { Footer, Navbar } from "@/components/ui";
+import styles from '@/styles/FilmsLayout.module.css';
+import { Box } from "@mui/material";
+import { useRouter } from 'next/router';
 
 interface Props {
     children: React.ReactNode; 
@@ -10,8 +13,11 @@ interface Props {
 }
 
 export const FilmsLayout:FC<Props> = ({ children,title,pageDescription,imageFullUrl }) => {
+
+    const router = useRouter();
+
   return (
-    <>
+    <Box>
         <Head>
             <title>{ title }</title>
             <meta name="description" content={ pageDescription }/>
@@ -23,17 +29,22 @@ export const FilmsLayout:FC<Props> = ({ children,title,pageDescription,imageFull
             <meta name="author" content="Guido Olguin" />
         </Head>
 
-        <nav>
+        <nav
+            style={{
+                background: "linear-gradient(180deg,#141a32 1%,rgba(20,26,50,0))",
+                backgroundColor:`${(router.asPath === '/inicio' || router.asPath === '/') ? 'transparen' : '#141a32'}`, 
+            }}
+        >
             <Navbar/>
         </nav>
 
         <main>
             { children }
         </main>
-{/* 
-        <footer>
+
+        <footer className={styles.layout}>
             <Footer/>
-        </footer> */}
-    </>
+        </footer>
+    </Box>
   )
 }
