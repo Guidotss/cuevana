@@ -10,13 +10,13 @@ export const getMovieById = async (id: number): Promise<Movie | undefined> => {
     }
 
     try {
-        const { data } = await filmsApi.get<AxiosMovieResponse>(`movie/${id}?api_key=${process.env.NEXT_PUBLIC_API_KEY_TMDB}&language=es-ES`);
+        const { data } = await filmsApi.get<Movie>(`movie/${id}?api_key=${process.env.NEXT_PUBLIC_API_KEY_TMDB}&language=es-ES`);
 
         if (!data) {
             return;
         }
 
-        return data.results;
+        return data;
     } catch (err) {
         console.log(err)
     }

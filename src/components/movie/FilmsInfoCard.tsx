@@ -44,6 +44,12 @@ export const FilmsInfoCard:FC<Props> = ({ movie }) => {
                         display: "none",
                     }
                 },
+                '& > div > div > div ': {
+                    diplsay: "block", 
+                },
+                '& > div > img':{
+                    opacity: 0.3,
+                }
 
             },
         mb:3,
@@ -78,9 +84,9 @@ export const FilmsInfoCard:FC<Props> = ({ movie }) => {
                 height: 20,
             }}
         />
-       <Box display="none">
+        <Box display="none">
             <FilmsHoverInfo movieInfo={movieInfo} />
-       </Box>
+        </Box>
     </Box>
     <Box
         display="flex"

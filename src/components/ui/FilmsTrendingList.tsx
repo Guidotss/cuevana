@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useMovies } from "@/hooks";
 import { TrendingResults } from "../../interfaces/trendingResults";
 import { PlayCircleOutlineOutlined } from "@mui/icons-material";
-import { FilmCard } from './FilmCard';
+import { FilmCard } from '../movie/FilmCard';
 
 export const FilmsTrendingList = () => {
   const [url, setUrl] = useState("trending/movie/day");

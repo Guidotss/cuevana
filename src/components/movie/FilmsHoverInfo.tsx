@@ -16,8 +16,9 @@ interface Props {
 export const FilmsHoverInfo:FC<Props> = ({ movieInfo }) => {
     const { filmId, genre_ids } = movieInfo;
     const { movie } = useMovies('', filmId); 
-
+    
     if(!movie) return null;
+
 
    
   return (

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Box, Grid, Typography } from "@mui/material"
 import { useMovies } from '@/hooks/useMovies';
 import { TrendingResults } from '@/interfaces/trendingResults';
-import { FilmsInfoCard } from './FilmsInfoCard';
+import { FilmsInfoCard } from '../movie/FilmsInfoCard';
 
 
 
