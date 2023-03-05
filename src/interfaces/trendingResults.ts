@@ -21,6 +21,7 @@ export interface TrendingResults {
     first_air_date?:string;
     genre_ids:number[];
     genres:Genres[]; 
+    runtime:number;
 }
 interface Genres { 
     id:number

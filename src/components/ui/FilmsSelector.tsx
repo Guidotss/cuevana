@@ -13,7 +13,7 @@ export const FilmsSelector = () => {
         trendsMovies: false,
         upcoming: false
     });
-    const [url, setUrl] = useState('movie/top_rated');
+    const [url, setUrl] = useState('movie/popular');
     const { movies } = useMovies(url,0);
 
   return (
@@ -40,7 +40,7 @@ export const FilmsSelector = () => {
                 <Typography 
                     onClick={() => {
                         setIsSelected({last:true, trendsMovies:false, upcoming:false})
-                        setUrl('movie/top_rated')
+                        setUrl('movie/popular')
                     }}
                     variant="h5"
                     component="h5"

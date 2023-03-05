@@ -41,6 +41,7 @@ export const HeaderImage: FC<Props> = ({ film }) => {
             zIndex: -1,
             marginTop: "-6.5rem",
             objectFit: "cover",
+            objectPosition: "center",
           }}
         />
       </Box>
