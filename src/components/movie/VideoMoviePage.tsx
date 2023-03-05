@@ -14,14 +14,11 @@ export const VideoMoviePage:FC<Props> = ({ video, videoTitle }) => {
       {video ? (
         <Box
           display="flex"
-          justifyContent="center"
           sx={{
             mt: -13,
           }}
         >
           <Box
-            display="flex"
-            justifyContent="center"
             sx={{
               position: "absolute",
               backgroundColor: "rgba(61,79,145,.5)",
@@ -33,13 +30,16 @@ export const VideoMoviePage:FC<Props> = ({ video, videoTitle }) => {
           />
 
           <Box
+            width={1440}
+            display="flex"
+            justifyContent="center"
             sx={{
               backgroundColor: "#080f28",
             }}
           >
             <iframe
-              width="1440px"
-              height="1080"
+              width="90%"
+              height="600vh"
               src={`https://www.youtube.com/embed/${video.key}`}
               title={videoTitle}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -54,14 +54,11 @@ export const VideoMoviePage:FC<Props> = ({ video, videoTitle }) => {
       ) : (
         <Box
           display="flex"
-          justifyContent="center"
           sx={{
             mt: -13,
           }}
         >
           <Box
-            display="flex"
-            justifyContent="center"
             sx={{
               position: "absolute",
               backgroundColor: "rgba(61,79,145,.5)",
@@ -73,13 +70,16 @@ export const VideoMoviePage:FC<Props> = ({ video, videoTitle }) => {
           />
 
           <Box
+            width={1440}
+            display="flex"
+            justifyContent="center"
             sx={{
               backgroundColor: "#080f28",
             }}
           >
             <iframe
-              width="1440px"
-              height="1080"
+              width="90%"
+              height="600vh"
               src={"https://www.youtube.com/embed/MN1wPmnNJxo"}
               title={videoTitle}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

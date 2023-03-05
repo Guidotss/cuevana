@@ -30,11 +30,12 @@ const FilmPage: FC<Props> = ({movie,video,similarMovies,anothersMovies,}) => {
         container
         sx={{
           p: 3,
-          ml: 25,
           mt: 10,
+          ml:10
         }}
       >
-        <Grid item xs={12} md={8}>
+        <Grid 
+          item xs={12} md={8}>
           <Box>
             <Typography
               color="white"
@@ -73,7 +74,7 @@ const FilmPage: FC<Props> = ({movie,video,similarMovies,anothersMovies,}) => {
             <AnotherMovieList anothersMovies={anothersMovies} />
           </Box>
         </Grid>
-        <Grid item xs={12} md={2}>
+        <Grid item xs={12} md={3}>
           <Box>
             <Typography
               color="#8da0bc"
