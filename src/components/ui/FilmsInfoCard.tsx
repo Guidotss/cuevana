@@ -4,6 +4,7 @@ import { PlayCircleOutlineOutlined } from "@mui/icons-material"
 import { FilmsHoverInfo } from './FilmsHoverInfo';
 import { TrendingResults } from '@/interfaces/trendingResults';
 import { FC, useState } from 'react';
+import { useRouter } from "next/router";
 
 interface Props { 
     movie:TrendingResults; 
@@ -12,18 +13,23 @@ interface Props {
 
 export const FilmsInfoCard:FC<Props> = ({ movie }) => {
 
+    const [ isMouseEnter, setIsMouseEnter ] = useState(true);
     const [movieInfo, setMovieInfo] = useState({
         filmId: 0,
         genre_ids: [] as number[]
     }); 
     
-    const [ isMouseEnter, setIsMouseEnter ] = useState(true);
+    const router = useRouter(); 
+    
+    const navigateToFilm = () => {
+        router.push(`/peliculas/${movie.id}`); 
+    }
     
     const handleMouseEnter = (movie:TrendingResults) => {
         setMovieInfo({
             filmId: movie.id,
             genre_ids: movie.genre_ids
-        })
+        }); 
     }
 
   return (
@@ -51,6 +57,7 @@ export const FilmsInfoCard:FC<Props> = ({ movie }) => {
             }
         }}
         onMouseEnter={() => handleMouseEnter(movie)}
+        onClick={ navigateToFilm }
     >
         <Image
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
