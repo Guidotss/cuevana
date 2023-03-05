@@ -1,17 +1,15 @@
 import Image from "next/image";
 import { GetStaticProps, NextPage } from "next";
 import { FilmsLayout } from "@/components/layouts";
-import { HeaderImage } from "@/components/ui/HeaderImage";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { filmsApi } from "@/api";
-import { AxiosTrendingResponse, TrendingResults } from "@/interfaces";
-import { SeriesList } from "@/components/ui";
-import { FilmsSelector } from '@/components/ui/FilmsSelector';
-import { FilmsTrendingList } from '../../components/ui/FilmsTrendingList';
+import { AxiosTrendingResponse, Series, TrendingResults } from "@/interfaces";
+import { FilmsSelector,FilmsTrendingList,SeriesList,HeaderImage } from '@/components/ui';
+
 
 interface Props {
   films: TrendingResults[];
-  series: TrendingResults[];
+  series: Series[];
 }
 
 export const HomePage: NextPage<Props> = ({ films, series }) => {
@@ -19,6 +17,8 @@ export const HomePage: NextPage<Props> = ({ films, series }) => {
   const mostPopularSeries = series
     .filter((serie) => serie.popularity > 100)
     .slice(0, 4);
+  
+    
 
   return (
     <FilmsLayout title="Home - Guivana" pageDescription="Home - Guivana">

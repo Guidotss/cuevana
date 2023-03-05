@@ -9,6 +9,7 @@ interface Props {
 }
 
 export const HeaderImage: FC<Props> = ({ film }) => {
+
   
   return (
     <Box>

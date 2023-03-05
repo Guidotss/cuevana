@@ -1,25 +1,28 @@
 import { FC } from 'react'
-import { GetServerSideProps} from 'next'
+import { useRouter } from 'next/router'
+import { GetServerSideProps } from 'next'
 import Image from 'next/image'
 import NextLink from 'next/link'
 import { filmsApi } from '@/api'
-import { Box, Chip, Grid, Link, Typography, ListItem } from '@mui/material';
-import { AxiosTrendingResponse, TrendingResults } from '@/interfaces'
+import { Box, Grid, Link, Typography} from '@mui/material';
+import { PlayCircleOutlineOutlined } from '@mui/icons-material';
+import {  Movie, TrendingResults, Video,AxiosAnotherMoviesResponse,AxiosMovieResponse,AxiosSimilarMoviesResponse,AxiosVideoResponse } from '@/interfaces'
 import { FilmsLayout } from '@/components/layouts';
-import { CircularProgressWithLabel, FilmCard, FilmsSelector, FilmsTrendingList } from '@/components/ui';
+import { CircularProgressWithLabel, FilmsTrendingList } from '@/components/ui';
 import { minTohours } from '@/utils';
-import { ConstructionOutlined, PlayCircleOutlineOutlined } from '@mui/icons-material';
-import { FilmsInfoCard } from '@/components/ui/FilmsInfoCard';
-import { useRouter } from 'next/router'
-import { positions } from '@mui/system'
+
+
+
+
+
 
 
 
 
 
 interface Props {
-    movie: TrendingResults; 
-    video:any
+    movie: Movie; 
+    video:Video
     similarMovies: TrendingResults[];
     anothersMovies: TrendingResults[];
 }
@@ -28,7 +31,7 @@ interface Props {
 
 const FilmPage:FC<Props> = ({ movie,video,similarMovies,anothersMovies }) => {
     
-    const router = useRouter(); 
+    const router = useRouter();
 
     const onNavigate = ( id:number ) => {
         router.push(`/peliculas/${id}`)
@@ -557,20 +560,27 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     const { id } = ctx.params as { id:string };
 
     try{
-        const { data } = await filmsApi.get<AxiosTrendingResponse>(`movie/${id}?api_key=${process.env.API_KEY_TMDB}&language=es-ES`); 
+        const { data } = await filmsApi.get<AxiosMovieResponse>(`movie/${id}?api_key=${process.env.API_KEY_TMDB}&language=es-ES`); 
+
         if(!data) throw new Error('No se encontro la pelicula');
 
-        const { data:video } = await filmsApi.get(`movie/${id}/videos?api_key=${process.env.API_KEY_TMDB}&language=es-ES`);
+        const { data:video } = await filmsApi.get<AxiosVideoResponse>(`movie/${id}/videos?api_key=${process.env.API_KEY_TMDB}&language=es-ES`);
         if(video.results === null) throw new Error('No se encontro el video');
         
-        const { data:similar } = await filmsApi.get(`movie/${id}/similar?api_key=${process.env.API_KEY_TMDB}&language=es-ES&page=1`);
+        const { data:similar } = await filmsApi.get<AxiosSimilarMoviesResponse>(`movie/${id}/similar?api_key=${process.env.API_KEY_TMDB}&language=es-ES&page=1`);
 
         const movie = JSON.parse(JSON.stringify(data)); 
         const similarMovies = JSON.parse(JSON.stringify(similar.results)).slice(0,5);
         
-        const { data:anothers } = await filmsApi.get(`movie/popular?api_key=${process.env.API_KEY_TMDB}&language=es-ES&page=1`);
+        const { data:anothers } = await filmsApi.get<AxiosAnotherMoviesResponse>(`movie/popular?api_key=${process.env.API_KEY_TMDB}&language=es-ES&page=1`);
         const anothersMovies = JSON.parse(JSON.stringify(anothers.results)).slice(0,5);
 
+        const aa = await filmsApi.get(`movie/popular?api_key=${process.env.API_KEY_TMDB}&language=es-ES&page=1`);
+        console.log(aa.data.results);
+        
+        
+        
+        
 
         return {
             props: {

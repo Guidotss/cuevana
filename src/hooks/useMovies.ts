@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
-import { TrendingResults } from '@/interfaces/trendingResults';
+import { TrendingResults,Movie } from '@/interfaces';
 import { getMoviesByUrl, getMovieById } from '@/utils';
+
 
 
 
 export const useMovies = (url:string, id:number) => {
     const [ movies, setMovies ] = useState<TrendingResults[]>([]);
-    const [ movie, setMovie ] = useState<TrendingResults>();
+    const [ movie, setMovie ] = useState<Movie>();
     useEffect(() => {
         getMovies(url);
         getMovie(id);

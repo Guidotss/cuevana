@@ -2,18 +2,16 @@ import { FC } from 'react'
 import Image from 'next/image';
 import { Box, Chip, Grid, Typography } from '@mui/material';
 import { PlayCircleOutlineOutlined } from '@mui/icons-material';
-import { TrendingResults } from '@/interfaces/trendingResults';
+import { Series } from '@/interfaces';
 
 
 
 
 interface Props {
-  series: TrendingResults[];
+  series: Series[];
 }
 
 export const SeriesList:FC<Props> = ({ series }) => {
-  
-
 
   return (
     <Grid 
