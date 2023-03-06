@@ -108,7 +108,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     const { data: video } = await filmsApi.get<AxiosVideoResponse>(
       `movie/${id}/videos?api_key=${process.env.API_KEY_TMDB}&language=es-ES`
     );
-    if (video.results === null) throw new Error("No se encontro el video");
+    if (video.results) throw new Error("No se encontro el video");
 
     const { data: similar } = await filmsApi.get<AxiosSimilarMoviesResponse>(
       `movie/${id}/similar?api_key=${process.env.API_KEY_TMDB}&language=es-ES&page=1`
@@ -130,7 +130,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
     return {
       props: {
-        movie,
+        movie: movie || null,
         video: video.results[0] || null,
         similarMovies: similarMovies || null,
         anothersMovies: anothersMovies || null,
