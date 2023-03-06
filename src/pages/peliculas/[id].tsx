@@ -17,6 +17,8 @@ interface Props {
 
 const FilmPage: FC<Props> = ({movie,video,similarMovies,anothersMovies,}) => {
 
+  console.log(process.env.API_KEY_TMDB); // undefined
+
   return (
     <FilmsLayout
       title={`Ver ${movie.title} 2023 online HD - Guivana 3`}
