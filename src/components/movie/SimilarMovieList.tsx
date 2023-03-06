@@ -16,7 +16,6 @@ export const SimilarMovieList:FC<Props> = ({ similarMovies }) => {
     const router = useRouter(); 
     
     const onNavigate = ( id:number ) => {
-      console.log(process.env.NEXT_PUBLIC_API_KEY_TMDB);
       router.push(`/peliculas/${id}`); 
     }
 
