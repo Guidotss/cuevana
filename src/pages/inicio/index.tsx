@@ -13,7 +13,7 @@ interface Props {
 }
 
 const HomePage: NextPage<Props> = ({ films, series }) => {
-  const mostPopularFilm = films.filter((film) => film.popularity > 100)[0];
+  const mostPopularFilm = films?.filter((film) => film.popularity > 100)[0];
   const mostPopularSeries = series?.filter((serie) => serie.popularity > 100).slice(0, 4);
   
     
