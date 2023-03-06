@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { GetServerSideProps, NextPage } from "next";
+import { GetServerSideProps, GetStaticProps, NextPage } from "next";
 import { FilmsLayout } from "@/components/layouts";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { filmsApi } from "@/api";
@@ -20,8 +20,7 @@ const HomePage: NextPage<Props> = ({ films, series }) => {
 
   return (
     <FilmsLayout title="Home - Guivana" pageDescription="Home - Guivana">
-      <h1>hola</h1>
-      {/* <Box>
+      <Box>
         <HeaderImage film={mostPopularFilm} />
       </Box>
       <Box
@@ -135,12 +134,12 @@ const HomePage: NextPage<Props> = ({ films, series }) => {
             </Box>
           </Grid>
         </Grid> 
-      </Box> */}
+      </Box>
     </FilmsLayout>
   );
 };
 
-/* export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export const getStaticProps: GetStaticProps = async (ctx) => {
   try {
     const topRatedFilms = await filmsApi.get<AxiosTrendingResponse>(
       `trending/movie/day?api_key=${process.env.API_KEY_TMDB}&language=es-ES`
@@ -158,7 +157,7 @@ const HomePage: NextPage<Props> = ({ films, series }) => {
   } catch (error) {
     throw new Error(`Error al obtener los datos:${error}`);
   }
-}; */
+};
 
 export default HomePage;
 
