@@ -15,9 +15,7 @@ interface Props {
   anothersMovies: TrendingResults[];
 }
 
-const FilmPage: FC<Props> = ({movie,video,similarMovies,anothersMovies,}) => {
-
-  console.log(process.env.API_KEY_TMDB); // undefined
+const FilmPage: FC<Props> = ({movie,video,similarMovies,anothersMovies,}) => { 
 
   return (
     <FilmsLayout

@@ -2,7 +2,7 @@ import { FC } from 'react';
 import Image from "next/image";
 import NextLink from "next/link";
 import { PlayCircleOutlineOutlined } from "@mui/icons-material";
-import { Box, Link } from "@mui/material";
+import { Box, collapseClasses, Link } from "@mui/material";
 import { TrendingResults } from '../../interfaces/trendingResults';
 import { useRouter } from 'next/router';
 
@@ -16,7 +16,8 @@ export const SimilarMovieList:FC<Props> = ({ similarMovies }) => {
     const router = useRouter(); 
     
     const onNavigate = ( id:number ) => {
-        router.push(`/peliculas/${id}`)
+      console.log(process.env.API_KEY_TMDB);
+      router.push(`/peliculas/${id}`); 
     }
 
   return (
