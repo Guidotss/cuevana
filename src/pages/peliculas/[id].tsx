@@ -116,7 +116,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     );
 
     const movie = JSON.parse(JSON.stringify(data));
-    const similarMovies = JSON.parse(JSON.stringify(similar.results)).slice(
+    const similarMovies = JSON.parse(JSON.stringify(similar.results))?.slice(
       0,
       5
     );
@@ -124,7 +124,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     const { data: anothers } = await filmsApi.get<AxiosAnotherMoviesResponse>(
       `movie/popular?api_key=${process.env.API_KEY_TMDB}&language=es-ES&page=1`
     );
-    const anothersMovies = JSON.parse(JSON.stringify(anothers.results)).slice(
+    const anothersMovies = JSON.parse(JSON.stringify(anothers.results))?.slice(
       0,
       5
     );

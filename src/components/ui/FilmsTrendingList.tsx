@@ -15,9 +15,7 @@ export const FilmsTrendingList = () => {
   });
 
   const { movies } = useMovies(url, 0);
-  const mostPopularMovies = movies
-    .filter((movie) => movie.vote_average >= 7.2)
-    .splice(0, 5);
+  const mostPopularMovies = movies?.filter((movie) => movie.vote_average >= 7.2)?.splice(0, 5);
 
   return (
     <Box>
