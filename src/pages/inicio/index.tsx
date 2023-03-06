@@ -12,9 +12,9 @@ interface Props {
   series: Series[];
 }
 
-export const HomePage: NextPage<Props> = ({ films, series }) => {
-  const mostPopularFilm = films?.filter((film) => film.popularity > 100)[0];
-  const mostPopularSeries = series?.filter((serie) => serie.popularity > 100)?.slice(0, 4);
+const HomePage: NextPage<Props> = ({ films, series }) => {
+  const mostPopularFilm = films.filter((film) => film.popularity > 100)[0];
+  const mostPopularSeries = series?.filter((serie) => serie.popularity > 100).slice(0, 4);
   
     
 
@@ -150,8 +150,8 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
     return {
       props: {
-        films: topRatedFilms.data.results,
-        series: topRatedSeries.data.results,
+        films: topRatedFilms.data.results || null,
+        series: topRatedSeries.data.results || null,
       },
     };
   } catch (error) {
