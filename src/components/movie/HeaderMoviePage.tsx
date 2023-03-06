@@ -127,7 +127,7 @@ export const HeaderMoviePage:FC<Props> = ({ movie }) => {
                     ml: 1,
                   }}
                 >
-                  {`${movie.release_date}`.split("-")[0]}
+                  {`${movie.release_date}`?.split("-")[0]}
                 </Typography>
               </Box>
             </Box>
