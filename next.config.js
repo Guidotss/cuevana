@@ -5,8 +5,8 @@ const nextConfig = {
     domains: ['m.media-amazon.com','image.tmdb.org']
   },
   env:{
-    API_KEY_TMDB: process.env.API_KEY_TMDB,
-    NEXT_PUBLIC_API_KEY_TMDB: process.env.NEXT_PUBLIC_API_KEY_TMDB,
+    API_KEY_TMDB: 'dda84b4335fd6e6fc0efd05d5cf2bbc4',
+    NEXT_PUBLIC_API_KEY_TMDB: 'dda84b4335fd6e6fc0efd05d5cf2bbc4',
   }
 }
 
