@@ -93,7 +93,7 @@ const FilmPage: NextPage<Props> = ({movie,video,similarMovies,anothersMovies,}) 
       </Grid>
     </FilmsLayout>
   );
-};
+}
 
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {

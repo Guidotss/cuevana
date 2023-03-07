@@ -9,3 +9,4 @@ export * from './VideoMoviePage';
 export * from './SimilarMovieList';
 export * from './AnotherMovieList';
 export * from './FilmsHoverInfo';
+export * from './FilmsInfoCard';
