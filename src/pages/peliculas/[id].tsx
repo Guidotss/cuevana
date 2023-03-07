@@ -16,6 +16,8 @@ interface Props {
 
 const FilmPage: NextPage<Props> = ({movie,video,similarMovies,anothersMovies,}) => { 
 
+  
+
   return (
     <FilmsLayout
       title={`Ver ${movie.title} 2023 online HD - Guivana 3`}
