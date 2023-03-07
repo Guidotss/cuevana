@@ -15,8 +15,7 @@ interface Props {
 }
 
 const FilmPage: NextPage<Props> = ({movie,video,similarMovies,anothersMovies,}) => { 
-
-  
+ 
 
   return (
     <FilmsLayout
@@ -102,18 +101,18 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   try {
     const { data } = await filmsApi.get<AxiosMovieResponse>(
-      `movie/${id}?api_key=dda84b4335fd6e6fc0efd05d5cf2bbc4&language=es-ES`
+      `movie/${id}?api_key=${process.env.API_KEY_TMDB}&language=es-ES`
     );
 
     if (!data) throw new Error("No se encontro la pelicula");
 
     const { data: video } = await filmsApi.get<AxiosVideoResponse>(
-      `movie/${id}/videos?api_key=dda84b4335fd6e6fc0efd05d5cf2bbc4&language=es-ES`
+      `movie/${id}/videos?api_key=${process.env.API_KEY_TMDB}&language=es-ES`
     );
     if (!video.results) throw new Error("No se encontro el video");
 
     const { data: similar } = await filmsApi.get<AxiosSimilarMoviesResponse>(
-      `movie/${id}/similar?api_key=dda84b4335fd6e6fc0efd05d5cf2bbc4&language=es-ES&page=1`
+      `movie/${id}/similar?api_key=${process.env.API_KEY_TMDB}&language=es-ES&page=1`
     );
 
     const movie = JSON.parse(JSON.stringify(data));
@@ -123,7 +122,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     );
 
     const { data: anothers } = await filmsApi.get<AxiosAnotherMoviesResponse>(
-      `movie/popular?api_key=dda84b4335fd6e6fc0efd05d5cf2bbc4&language=es-ES&page=1`
+      `movie/popular?api_key=${process.env.API_KEY_TMDB}&language=es-ES&page=1`
     );
     const anothersMovies = JSON.parse(JSON.stringify(anothers.results))?.slice(
       0,
