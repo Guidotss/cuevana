@@ -153,6 +153,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
         films: topRatedFilms.data.results || null,
         series: topRatedSeries.data.results || null,
       },
+      revalidate: 60 * 60 * 24,
     };
   } catch (error) {
     throw new Error(`Error al obtener los datos:${error}`);
