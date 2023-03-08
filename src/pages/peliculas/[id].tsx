@@ -15,7 +15,9 @@ interface Props {
 }
 
 const FilmPage: NextPage<Props> = ({movie,video,similarMovies,anothersMovies,}) => { 
- 
+  
+  const similarMoviesSplited = similarMovies?.slice(0, 5);
+  const anothersMoviesSplited = anothersMovies?.slice(0, 5);
 
   return (
     <FilmsLayout
@@ -55,7 +57,7 @@ const FilmPage: NextPage<Props> = ({movie,video,similarMovies,anothersMovies,}) 
               mt: 5,
             }}
           >
-            <SimilarMovieList similarMovies={similarMovies} />
+            <SimilarMovieList similarMovies={similarMoviesSplited} />
           </Grid>
           <Box
             sx={{
@@ -72,7 +74,7 @@ const FilmPage: NextPage<Props> = ({movie,video,similarMovies,anothersMovies,}) 
             </Typography>
           </Box>
           <Box>
-            <AnotherMovieList anothersMovies={anothersMovies} />
+            <AnotherMovieList anothersMovies={anothersMoviesSplited} />
           </Box>
         </Grid>
         <Grid item xs={12} md={3}>
@@ -116,19 +118,13 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     );
 
     const movie = JSON.parse(JSON.stringify(data));
-    const similarMovies = JSON.parse(JSON.stringify(similar.results))?.slice(
-      0,
-      5
-    );
+    const similarMovies = JSON.parse(JSON.stringify(similar.results));
 
     const { data: anothers } = await filmsApi.get<AxiosAnotherMoviesResponse>(
       `movie/popular?api_key=${process.env.API_KEY_TMDB}&language=es-ES&page=1`
     );
-    const anothersMovies = JSON.parse(JSON.stringify(anothers.results))?.slice(
-      0,
-      5
-    );
-
+    
+    const anothersMovies = JSON.parse(JSON.stringify(anothers.results)); 
     return {
       props: {
         movie: movie || null,
