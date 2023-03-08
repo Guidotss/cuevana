@@ -132,7 +132,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     return {
       props: {
         movie: movie || null,
-        video: video.results[0] || null,
+        video: null,
         similarMovies: similarMovies || null,
         anothersMovies: anothersMovies || null,
       },

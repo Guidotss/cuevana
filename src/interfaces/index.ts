@@ -8,4 +8,3 @@ export * from './trendingResults';
 export * from './movie';
 export * from './video';
 export * from './series';
-export * from './AxiosSeriesResponse';
