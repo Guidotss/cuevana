@@ -8,3 +8,4 @@ export * from './SeriesList';
 export * from './FilmsSelector';
 export * from './FilmsTrendingList';
 export * from './CircularProgressWithLabel';
+export * from './GenreText';

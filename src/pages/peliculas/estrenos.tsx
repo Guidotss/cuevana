@@ -21,58 +21,65 @@ const UpcomingPage: NextPage<Props> = ({ movies }) => {
         container
         display="flex"
         sx={{
-          margin: "50px 100px",
+          margin: "60px 150px",
         }}
       >
         <Grid item xs={12} md={8}>
-          <Typography
-            color="white"
-            variant="h4"
-            component="h4"
-            fontWeight="bold"
-          >
-            Películas - Estrenos
-          </Typography>
           <Box
             sx={{
-              backgroundColor: "#141a32",
-              p: 2,
-              borderRadius: 1,
+              ml: 10,
             }}
-            textAlign="start"
           >
-            <Typography color="#b9c4d5">
-              En esta sección tendrás las últimas películas publicadas en
-              cuevana, cada vez que subimos una película nueva, aquí verás el
-              contenido más reciente y actualizado. Sin embargo, puedes visitar
-              la sección de peliculas
+            <Typography
+              color="white"
+              variant="h4"
+              component="h4"
+              fontWeight="bold"
+            >
+              Películas - Estrenos
             </Typography>
-            <Box display="flex" gap={1}>
-              <NextLink href={`/peliculas`} passHref legacyBehavior>
-                <Link
-                  fontWeight="bold"
-                  sx={{
-                    "&:hover": {
-                      color: "#007aff",
-                    },
-                  }}
-                >
-                  tendencia del día
-                </Link>
-              </NextLink>
-              <Typography color="#b9c4d5">y</Typography>
-              <NextLink href={`/peliculas`} passHref legacyBehavior>
-                <Link
-                  fontWeight="bold"
-                  sx={{
-                    "&:hover": {
-                      color: "#007aff",
-                    },
-                  }}
-                >
-                  tendencia de la semana.
-                </Link>
-              </NextLink>
+            <Box
+              sx={{
+                backgroundColor: "#141a32",
+                p: 2,
+                borderRadius: 1,
+                width: "95%",
+              }}
+              textAlign="start"
+            >
+              <Typography color="#b9c4d5">
+                En esta sección tendrás las últimas películas publicadas en
+                cuevana, cada vez que subimos una película nueva, aquí verás el
+                contenido más reciente y actualizado. Sin embargo, puedes visitar
+                la sección de peliculas
+              </Typography>
+              <Box display="flex" gap={1}>
+                <NextLink href={`/peliculas`} passHref legacyBehavior>
+                  <Link
+                    fontWeight="bold"
+                    sx={{
+                      "&:hover": {
+                        color: "#007aff",
+                      },
+                    }}
+                  >
+                    tendencia del día
+                  </Link>
+                </NextLink>
+                <Typography color="#b9c4d5">y</Typography>
+                <NextLink href={`/peliculas`} passHref legacyBehavior>
+                  <Link
+                    fontWeight="bold"
+                    sx={{
+                      "&:hover": {
+                        color: "#007aff",
+                      },
+                    }}
+                  >
+                    tendencia de la semana.
+                  </Link>
+                </NextLink>
+              </Box>
             </Box>
           </Box>
           <Grid
@@ -80,6 +87,7 @@ const UpcomingPage: NextPage<Props> = ({ movies }) => {
             container
             sx={{
               mt: 3,
+              ml: 10,
             }}
           >
             {movies.map((movie: TrendingResults) => (
@@ -87,7 +95,17 @@ const UpcomingPage: NextPage<Props> = ({ movies }) => {
             ))}
           </Grid>
         </Grid>
-        <Grid>
+        <Grid item xs={12} md={2}>
+        <Box>
+            <Typography
+              color="#8da0bc"
+              variant="h5"
+              component="h5"
+              fontWeight="bold"
+            >
+              Peliculas Destacadas
+            </Typography>
+          </Box>
           <FilmsTrendingList />
         </Grid>
       </Grid>

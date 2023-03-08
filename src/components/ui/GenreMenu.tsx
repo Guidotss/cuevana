@@ -64,7 +64,7 @@ export const GenreMenu:FC<Props> = ({ isOpen }) => {
                                         }
                                     }}
                                 >
-                                    <NextLink href={`genero/${genre}`} passHref legacyBehavior>
+                                    <NextLink href={`/genero/${genre.toLowerCase()}`} passHref legacyBehavior>
                                         <Link
                                             sx={{
                                                 "&:hover": {

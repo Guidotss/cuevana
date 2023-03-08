@@ -12,6 +12,7 @@ interface Props {
   trendingMovies: TrendingResults[];
 }
 
+
 const TrendingPage: NextPage<Props> = ({ trendingMovies }) => {
   const router = useRouter();
   const trending = router.query.trending;
