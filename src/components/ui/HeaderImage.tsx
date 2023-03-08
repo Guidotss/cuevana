@@ -56,7 +56,7 @@ export const HeaderImage: FC<Props> = ({ film }) => {
             },
           }}
         >
-          <NextLink href={`/pelicula/${film.id}`} passHref legacyBehavior>
+          <NextLink href={`/peliculas/${film.id}`} passHref legacyBehavior>
             <Link>
               <Typography
                 variant="h2"
@@ -148,7 +148,7 @@ export const HeaderImage: FC<Props> = ({ film }) => {
           </Typography>
         </Box>
         <NextLink
-          href={`/pelicula/${film.id}`}
+          href={`/peliculas/${film.id}`}
           passHref
           legacyBehavior
         >

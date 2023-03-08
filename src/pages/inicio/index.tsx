@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { GetServerSideProps, GetStaticProps, NextPage } from "next";
+import { useRouter } from "next/router";
+import { GetStaticProps, NextPage } from "next";
 import { FilmsLayout } from "@/components/layouts";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { filmsApi } from "@/api";
@@ -13,9 +14,14 @@ interface Props {
 }
 
 const HomePage: NextPage<Props> = ({ films, series }) => {
+  
   const mostPopularFilm = films?.filter((film) => film.popularity > 100)[0];
   const mostPopularSeries = series?.filter((serie) => serie.popularity > 100).slice(0, 4);
+  const router = useRouter();
   
+  const navigate = (url:string) => {
+    router.push(`/${url}`); 
+  }
     
 
   return (
@@ -112,6 +118,24 @@ const HomePage: NextPage<Props> = ({ films, series }) => {
             }}
           >
             <FilmsSelector/>
+            <Box
+              display="flex"
+              justifyContent="center"
+              width="85%"
+            >
+              <Button
+                variant="contained"
+                fullWidth
+                sx={{
+                  borderRadius: 10,
+                  height: 50,
+                  backgroundColor:"#3d4f91"
+                }}
+                onClick={() => navigate('peliculas')}
+              >
+                Cargar mas peliculas
+              </Button>
+            </Box>
           </Grid>  
           <Grid 
             item

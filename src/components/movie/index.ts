@@ -8,5 +8,5 @@ export * from './HeaderMoviePage';
 export * from './VideoMoviePage';
 export * from './SimilarMovieList';
 export * from './AnotherMovieList';
-export * from './FilmsHoverInfo';
+export * from '../ui/HoverInfoCard';
 export * from './FilmsInfoCard';

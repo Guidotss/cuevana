@@ -9,3 +9,4 @@ export * from './FilmsSelector';
 export * from './FilmsTrendingList';
 export * from './CircularProgressWithLabel';
 export * from './GenreText';
+export * from './HoverInfoCard';

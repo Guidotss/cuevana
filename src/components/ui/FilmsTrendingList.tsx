@@ -8,6 +8,7 @@ import { PlayCircleOutlineOutlined } from "@mui/icons-material";
 import { FilmCard } from '../movie/FilmCard';
 
 export const FilmsTrendingList = () => {
+  
   const [url, setUrl] = useState("trending/movie/day");
   const [timeWindow, setTimeWindow] = useState({
     day: true,

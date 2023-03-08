@@ -1,4 +1,3 @@
-import NextLink from "next/link";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { useRouter } from "next/router";
 import { Box, capitalize, Grid, Link, Typography } from "@mui/material";

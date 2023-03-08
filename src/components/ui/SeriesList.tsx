@@ -9,9 +9,10 @@ import { Series } from '@/interfaces';
 
 interface Props {
   series: Series[];
+  isPopularSeries?: boolean;
 }
 
-export const SeriesList:FC<Props> = ({ series }) => {
+export const SeriesList:FC<Props> = ({ series,isPopularSeries }) => {
 
   return (
     <Grid 

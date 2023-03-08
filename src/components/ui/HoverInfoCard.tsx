@@ -9,13 +9,14 @@ interface Props {
     movieInfo:{
       filmId: number;
       genre_ids: number[];
-    },
-    
+    }
 }   
 
-export const FilmsHoverInfo:FC<Props> = ({ movieInfo }) => {
-    const { filmId, genre_ids } = movieInfo;
+export const HoverInfoCard:FC<Props> = ({ movieInfo }) => {
+  
+    const { filmId } = movieInfo;
     const { movie } = useMovies('', filmId); 
+    
     
     if(!movie) return null;
 

@@ -1,13 +1,12 @@
-import Image from "next/image"
-import { Box, Chip, Grid, Typography } from "@mui/material"
-import { PlayCircleOutlineOutlined } from "@mui/icons-material"
-import { FilmsHoverInfo } from './FilmsHoverInfo';
-import { TrendingResults } from '@/interfaces/trendingResults';
 import { FC, useState } from 'react';
 import { useRouter } from "next/router";
+import Image from "next/image"
+import { Box, Chip, Grid, Typography } from "@mui/material"
+import { HoverInfoCard } from "@/components/ui";
+import { TrendingResults } from '@/interfaces/trendingResults';
 
 interface Props { 
-    movie:TrendingResults; 
+    movie:TrendingResults;
 }
 
 
@@ -85,7 +84,7 @@ export const FilmsInfoCard:FC<Props> = ({ movie }) => {
             }}
         />
         <Box display="none">
-            <FilmsHoverInfo movieInfo={movieInfo} />
+            <HoverInfoCard movieInfo={movieInfo} />
         </Box>
     </Box>
     <Box
