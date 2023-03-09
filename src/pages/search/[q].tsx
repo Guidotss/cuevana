@@ -4,6 +4,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import { filmsApi } from "@/api";
 import { FilmsInfoCard } from "@/components/movie";
 import { FilmsLayout } from "@/components/layouts";
+import { FilmsTrendingList } from '../../components/ui/FilmsTrendingList';
 
 
 interface Props {
@@ -14,6 +15,20 @@ const searchPage:NextPage<Props> = ({ movies }) => {
 
     return (
         <FilmsLayout title="Search - Guivana" pageDescription="todas las peliculas relacionadas a la busqueda del usuario">
+            <Typography
+                variant="h4"
+                component="h1"
+                fontWeight="bold"
+                color="white"
+                sx={{
+                    ml:11,
+                    mt:3,
+                    mb:5
+
+                }}
+            >
+                Search
+            </Typography>
             <Grid 
                 container 
                 display="flex"
@@ -21,17 +36,49 @@ const searchPage:NextPage<Props> = ({ movies }) => {
                     mt:2
                 }}
             >
-                {
-                    movies.map((movie:TrendingResults) => {
-                        if(!movie.backdrop_path || !movie.release_date){
-                            return null
-                        }
+                <Grid
+                    item 
+                    xs={12}
+                    md={8}
+                    display="flex"
+                    sx={{
+                        ml:8
+                    }}
+                >
+                    {
+                        movies.map((movie:TrendingResults) => {
+                            if(!movie.backdrop_path || !movie.release_date){
+                                return null
+                            }
 
-                        return (
-                            <FilmsInfoCard key={movie.id}  movie={movie}/>
-                        )
-                    })
-                }
+                            return (
+                                <FilmsInfoCard key={movie.id}  movie={movie}/>
+                            )
+                        })
+                    }
+                </Grid>
+                <Grid
+                    item
+                    xs={12}
+                    md={3}
+                >
+                    <Box
+                        sx={{
+                            ml:5,
+                            mt:2
+                        }}
+                    >
+                        <Typography
+                            variant="h5"
+                            component="h2"
+                            fontWeight="bold"
+                            color="#8da0bc"
+                        >
+                            Peliculas Destacadas
+                        </Typography>
+                    </Box>
+                    <FilmsTrendingList/>
+                </Grid>
             </Grid>
         </FilmsLayout>
     )

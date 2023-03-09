@@ -26,7 +26,7 @@ const FilmPage: NextPage<Props> = ({movie,video,similarMovies,anothersMovies,}) 
       imageFullUrl={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
     >
       <HeaderMoviePage movie={movie} />
-      <Box>
+      <Box display="flex" justifyContent="center">
         <VideoMoviePage video={video} videoTitle={movie.title} />
       </Box>
       <Grid
@@ -108,11 +108,11 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
     if (!data) throw new Error("No se encontro la pelicula");
 
-   /*  const { data: video } = await filmsApi.get<AxiosVideoResponse>(
+    const { data: video } = await filmsApi.get<AxiosVideoResponse>(
       `movie/${id}/videos?api_key=${process.env.API_KEY_TMDB}&language=es-ES`
     );
     if (!video.results) throw new Error("No se encontro el video");
- */
+ 
     const { data: similar } = await filmsApi.get<AxiosSimilarMoviesResponse>(
       `movie/${id}/similar?api_key=${process.env.API_KEY_TMDB}&language=es-ES&page=1`
     );
@@ -128,7 +128,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     return {
       props: {
         movie: movie || null,
-        video: null,
+        video: video.results[0] || null,
         similarMovies: similarMovies || null,
         anothersMovies: anothersMovies || null,
       },

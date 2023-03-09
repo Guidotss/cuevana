@@ -70,7 +70,7 @@ export const Navbar = () => {
         </Box>
 
         <Box display="flex" gap={5} sx={{ ml: 5, mt: 2 }}>
-          <NextLink href="/" passHref legacyBehavior>
+          <NextLink href="/inicio" passHref legacyBehavior>
             <Link
               sx={{
                 "&:hover": {
