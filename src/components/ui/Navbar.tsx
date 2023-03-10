@@ -16,15 +16,22 @@ import { SearchOutlined, KeyboardArrowDownOutlined, Opacity } from "@mui/icons-m
 import { FilmsMenu } from "./FilmsMenu";
 import { GenreMenu } from './GenreMenu';
 import { SeriesMenu } from "./SeriesMenu";
+import { useForm } from "@/hooks";
 
 export const Navbar = () => {
+
+  const router = useRouter();
+  const { input, handleChange, onSubmit } = useForm();
+
+  
+
+
   const [isMouseEnter, setIsMouseEnter] = useState({
     isMouseFilmsEnter: false,
     isMouseGenreEnter: false,
     isMouseSeriesEnter: false,
   });
 
-  const router = useRouter();
 
   return (
     <AppBar> 
@@ -205,6 +212,11 @@ export const Navbar = () => {
             placeholder="Buscador..."
             margin="none"
             disableUnderline
+            value={input}
+            onChange={handleChange}
+            onKeyDown={ press => press.key === "Enter" && onSubmit() }
+
+
             sx={{
               color: "white",
               width: 180,
@@ -226,7 +238,7 @@ export const Navbar = () => {
             }}
             endAdornment={
               <InputAdornment position="end">
-                <IconButton>
+                <IconButton onClick={onSubmit} >
                   <SearchOutlined
                     fontSize="medium"
                     sx={{
