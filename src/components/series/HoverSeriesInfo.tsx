@@ -1,20 +1,21 @@
 import { Box, Typography } from "@mui/material";
 import { FC } from "react"
 import { useSeries } from '../../hooks/useSeries';
+import { Series } from '../../interfaces/series';
 
 
 interface Props {
-  serieId:number; 
+  serie:Series; 
+  serieId:number;
 }
 
-const HoverSeriesInfo:FC<Props> = ({ serieId }) => {
+const HoverSeriesInfo:FC<Props> = ({ serie,serieId }) => {
 
-  const { serie } = useSeries(serieId); 
-
+  const { serie:serieInfo } = useSeries(serieId);
 
   if(!serie) return null;
   
-  console.log(serie); 
+
 
   return (
     <Box> 
@@ -103,34 +104,37 @@ const HoverSeriesInfo:FC<Props> = ({ serieId }) => {
               mt:2
             }}
           >
-            <Box>
+            <Box
+              display="flex"
+              alignContent="center"
+              alignItems="center"
+              
+            >
               <Typography
                 color="white"
                 fontWeight={100}
               >
                 Genero:
               </Typography>
-            </Box>
-            <Box>
-              <Box display="flex">
-                {serie.genres.map((genre,index) => (
-                  <Box 
-                    key={genre.id}
-                    display="flex"
-                    sx={{
-                      ml:1,
-                      mt:0.4
-                    }}
-                  >
-                    <Typography
-                      color="#8da0bc"
-                      fontSize={13}
-                    >
-                      {genre.name},
-                    </Typography> 
-                  </Box>
-                ))}
-              </Box>
+                <Box 
+                  display="flex"
+                  gap={1}
+                  sx={{
+                    ml:1
+                  }}
+                >
+                  {
+                    serieInfo?.genres.map(genre => (
+                      <Typography
+                        color="#4f6b95"
+                        fontSize={13}
+                        key={genre.id}
+                      >
+                        {genre.name}
+                      </Typography>
+                    ))
+                  }
+                </Box>
             </Box>
           </Box>
         </Box>

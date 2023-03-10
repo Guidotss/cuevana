@@ -69,7 +69,7 @@ export const SeriesCard: FC<Props> = ({ serie }) => {
             ml:-30
           }}
         >
-          <HoverSeriesInfo serieId={ id } />
+          <HoverSeriesInfo serieId={serie.id} serie={ serie } />
       </Box>
       </Box>
       <Box
