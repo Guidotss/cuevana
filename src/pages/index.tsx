@@ -1,11 +1,10 @@
-import { useRouter } from "next/router";
 import NextLink from "next/link";
 import Image from "next/image";
 
 import { FilmsLayout } from "@/components/layouts/FilmsLayout";
-import { HomeDataCard, InfoCard } from "@/components/ui";
-import { Box, Button, Link, Typography } from "@mui/material";
-import { FormFilms } from "../components/ui/FormFilms";
+import { HomeDataCard, InfoCard,FormFilms } from "@/components/ui";
+import { Box, Link, Typography } from "@mui/material";
+
 
 const WelcomePage = () => {
 
