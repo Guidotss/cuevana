@@ -11,7 +11,7 @@ interface Props {
 }
 
 
-export const FilmCard:FC<Props> = ({ movie}) => {
+export const FilmCard:FC<Props> = ({ movie }) => {
 
   const router = useRouter(); 
 

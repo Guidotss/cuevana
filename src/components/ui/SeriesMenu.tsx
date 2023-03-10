@@ -46,7 +46,7 @@ export const SeriesMenu:FC<Props> = ({ isOpen }) => {
                             }}
                         >
                             <NextLink 
-                                href={`/series/${category === 'Series' ? '/' : category === 'Estrenos' || category === 'Episodios' ? category.toLowerCase() : category === 'Tendencias semanal' ? 'tendencias/semanal' : category === 'Tendencias diaria' ? 'tendencias/diarias': null}`}
+                                href={`/series/${category === 'Series' ? '/' : category === 'Estrenos' || category === 'Episodios' ? category.toLowerCase() : category === 'Tendencias semanal' ? 'tendencias/semanales' : category === 'Tendencias diaria' ? 'tendencias/diarias': null}`}
                                 passHref 
                                 legacyBehavior
                             >

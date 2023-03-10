@@ -70,12 +70,16 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       `/search/multi?api_key=${process.env.API_KEY_TMDB}&query=${q}`
     );
 
-    if (!data) throw new Error("Error al obtener las peliculas");
+    if (!data){
+      return {
+        notFound: true,
+      };
+    }
 
     return {
       props: {
         movies: data.results,
-      },
+      }
     };
   } catch (err) {
     console.log(err);
