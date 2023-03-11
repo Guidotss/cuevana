@@ -32,7 +32,7 @@ export const FilmsLayout:FC<Props> = ({ children,title,pageDescription,imageFull
         <nav
             style={{
                 background: "linear-gradient(180deg,#141a32 1%,rgba(20,26,50,0))",
-                backgroundColor:`${(router.asPath === '/inicio' || router.asPath === '/' || router.asPath === `/peliculas/${router.query.id}`) ? 'transparen' : '#141a32'}`, 
+                backgroundColor:`${(router.asPath === '/inicio' || router.asPath === '/' || router.asPath === `/peliculas/${router.query.id}`) || router.asPath === `/series/${router.query.id}` ? 'transparen' : '#141a32'}`, 
             }}
         >
             <Navbar/>

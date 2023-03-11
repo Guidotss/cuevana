@@ -9,3 +9,4 @@ export * from './movie';
 export * from './video';
 export * from './series';
 export * from './axiosSeriesResponse';
+export * from './serieById';

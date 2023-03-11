@@ -2,16 +2,18 @@ import Image from "next/image";
 import { Box, Typography } from "@mui/material";
 import { minTohours } from "@/utils";
 import { CircularProgressWithLabel } from "../ui/CircularProgressWithLabel";
-import { Movie } from "@/interfaces";
+import { Movie, SerieById } from "@/interfaces";
 import { FC } from "react";
 
-
-
 interface Props {
-    movie: Movie
+  movie?: Movie;
+  serie?: SerieById;
 }
 
-export const HeaderMoviePage:FC<Props> = ({ movie }) => {
+export const HeaderMoviePage: FC<Props> = ({ movie, serie }) => {
+
+  console.log(serie); 
+
   return (
     <Box display="flex">
       <Box
@@ -31,23 +33,43 @@ export const HeaderMoviePage:FC<Props> = ({ movie }) => {
           },
         }}
       >
-        <Image
-          src={`https://image.tmdb.org/t/p/original${
-            movie.backdrop_path === null
-              ? movie.poster_path
-              : movie.backdrop_path
-          }`}
-          alt={movie.title!}
-          fill
-          loading="lazy"
-          quality={100}
-          style={{
-            zIndex: -1,
-            marginTop: "-6.5rem",
-            objectFit: "cover",
-            opacity: 0.5,
-          }}
-        />
+        {movie ? (
+          <Image
+            src={`https://image.tmdb.org/t/p/original${
+              movie?.backdrop_path === null
+                ? movie?.poster_path
+                : movie?.backdrop_path
+            }`}
+            alt={movie?.title!}
+            fill
+            loading="lazy"
+            quality={100}
+            style={{
+              zIndex: -1,
+              marginTop: "-6.5rem",
+              objectFit: "cover",
+              opacity: 0.5,
+            }}
+          />
+        ) : (
+          <Image
+            src={`https://image.tmdb.org/t/p/original${
+              serie?.backdrop_path === null
+                ? serie?.poster_path
+                : serie?.backdrop_path
+            }`}
+            alt={serie?.name!}
+            fill
+            loading="lazy"
+            quality={100}
+            style={{
+              zIndex: -1,
+              marginTop: "-6.5rem",
+              objectFit: "cover",
+              opacity: 0.5,
+            }}
+          />
+        )}
         <Box
           display="flex"
           gap={4}
@@ -60,8 +82,8 @@ export const HeaderMoviePage:FC<Props> = ({ movie }) => {
         >
           <Box>
             <Image
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt={movie.title!}
+              src={`https://image.tmdb.org/t/p/w500${movie?.poster_path || serie?.poster_path}`}
+              alt={movie?.title! || serie?.name!}
               height={300}
               width={200}
               style={{
@@ -76,7 +98,7 @@ export const HeaderMoviePage:FC<Props> = ({ movie }) => {
               fontWeight="bold"
               color="white"
             >
-              {movie.title}
+              {movie?.title || serie?.name}
             </Typography>
             <Typography
               variant="body1"
@@ -86,7 +108,7 @@ export const HeaderMoviePage:FC<Props> = ({ movie }) => {
                 mt: 2,
               }}
             >
-              {movie.title}
+              {movie?.title || serie?.name}
             </Typography>
             <Box
               display="flex"
@@ -95,7 +117,7 @@ export const HeaderMoviePage:FC<Props> = ({ movie }) => {
               }}
             >
               <CircularProgressWithLabel
-                value={movie.vote_average * 10}
+                value={movie?.vote_average! * 10 || serie?.vote_average! * 10}
                 sx={{
                   color: "#edb709",
                 }}
@@ -108,7 +130,7 @@ export const HeaderMoviePage:FC<Props> = ({ movie }) => {
                 }}
               >
                 <Typography color="#8da0bc" variant="body1" component="p">
-                  {minTohours(movie.runtime)}
+                  {minTohours(movie?.runtime)}
                 </Typography>
                 <Typography
                   color="#8da0bc"
@@ -127,7 +149,7 @@ export const HeaderMoviePage:FC<Props> = ({ movie }) => {
                     ml: 1,
                   }}
                 >
-                  {`${movie.release_date}`?.split("-")[0]}
+                  {serie?.first_air_date?.split("-")[0] || movie?.release_date?.split("-")[0]}
                 </Typography>
               </Box>
             </Box>
@@ -137,7 +159,7 @@ export const HeaderMoviePage:FC<Props> = ({ movie }) => {
                 width: "85%",
               }}
             >
-              <Typography color="#8da0bc">{movie.overview}</Typography>
+              <Typography color="#8da0bc">{movie?.overview || serie?.overview}</Typography>
             </Box>
             <Box
               display="flex"
@@ -146,19 +168,39 @@ export const HeaderMoviePage:FC<Props> = ({ movie }) => {
               }}
             >
               <Typography color="#8da0bc">Genero:</Typography>
-              <Box display="flex" gap={1} sx={{ ml: 1 }} alignItems="center">
-                {movie.genres.map((genre) => (
-                  <Typography
-                    key={genre.id}
-                    color="white"
-                    variant="body2"
-                    component="p"
-                    fontWeight={200}
-                  >
-                    {genre.name}
-                  </Typography>
-                ))}
-              </Box>
+              {
+                movie
+                  ? (
+                    <Box display="flex" gap={1} sx={{ ml: 1 }} alignItems="center">
+                      {movie?.genres.map((genre) => (
+                        <Typography
+                          key={genre.id}
+                          color="white"
+                          variant="body2"
+                          component="p"
+                          fontWeight={200}
+                        >
+                          {genre.name}
+                        </Typography>
+                      ))}
+                    </Box>
+                  )
+                  :(
+                    <Box display="flex" gap={1} sx={{ ml: 1 }} alignItems="center">
+                    {serie?.genres.map((genre) => (
+                      <Typography
+                        key={genre.id}
+                        color="white"
+                        variant="body2"
+                        component="p"
+                        fontWeight={200}
+                      >
+                        {genre.name}
+                      </Typography>
+                    ))}
+                  </Box>
+                  )
+              }
             </Box>
           </Box>
         </Box>

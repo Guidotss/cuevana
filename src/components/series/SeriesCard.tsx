@@ -17,7 +17,7 @@ export const SeriesCard: FC<Props> = ({ serie }) => {
   const router = useRouter();
   
   const navigateToSerie = () => {
-    router.push(`/serie/${serie.id}`);
+    router.push(`/series/${serie.id}`);
   };
   
 
