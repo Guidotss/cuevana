@@ -110,6 +110,9 @@ const SeriesPage: NextPage<Props> = ({ series, trendingDay, trendingWeek }) => {
   );
 };
 
+
+
+
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const { data } = await filmsApi.get<AxiosSeriesResponse>(
     `tv/top_rated?api_key=${process.env.API_KEY_TMDB}&language=es-ES`
