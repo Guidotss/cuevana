@@ -41,6 +41,7 @@ export const SeriesTrendingList: FC<Props> = ({ trendingDay, trendingWeek }) => 
             borderBottom: `${
               timeWindow === "day" ? "2px solid #edb709" : "none"
             }`,
+            color: `${timeWindow === "day" ? "white" : "#8da0bc"}`,
             width: "100px",
           }}
         >
@@ -68,6 +69,7 @@ export const SeriesTrendingList: FC<Props> = ({ trendingDay, trendingWeek }) => 
             borderBottom: `${
               timeWindow === "week" ? "2px solid #edb709" : "none"
             }`,
+            color: `${timeWindow === "week" ? "white" : "#8da0bc"}`,
             width: "100px",
           }}
         >
