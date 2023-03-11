@@ -4,10 +4,10 @@ import { useForm } from '@/hooks';
 
 export const FormFilms = () => {
 
-    const { input,onSubmit,handleChange } = useForm();
+    const { input,loading,onSubmit,handleChange } = useForm();
 
     return (
-        
+            
             <Input
                 type="text"
                 placeholder="Buscar peliculas y series..."

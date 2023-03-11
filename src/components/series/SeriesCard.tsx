@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { Series } from "@/interfaces/series";
-import { Box, Link, Typography } from "@mui/material";
+import { Box, Chip, Link, Typography } from "@mui/material";
 import { PlayCircleOutlineOutlined } from "@mui/icons-material";
 import HoverSeriesInfo from './HoverSeriesInfo';
 
@@ -49,7 +49,7 @@ export const SeriesCard: FC<Props> = ({ serie }) => {
           width={190}
           height={300}
           style={{
-            borderRadius: 10,
+            borderRadius: 4,
           }}
         />
         <PlayCircleOutlineOutlined
@@ -61,6 +61,59 @@ export const SeriesCard: FC<Props> = ({ serie }) => {
             display: "none",
           }}
         />
+        <Box 
+          display="flex" 
+          justifyContent="space-between"
+        >
+          <Chip
+            sx={{
+              position: "absolute",
+              mt: 35,
+              ml: -23,
+              backgroundColor: "#edb709",
+              height: 15,
+              width: 35,
+            }}
+            label={
+              <Typography
+                variant="body2"
+                component="p"
+                fontSize={11}
+                fontWeight={600}
+                color="black"
+                sx={{
+                  ml: -1,
+                }}
+              >
+                Serie
+              </Typography>
+            }
+          />
+          <Chip
+            color="primary"
+            sx={{
+              position: "absolute",
+              mt: 35,
+              ml:-5,
+              height: 15,
+              width: 35,
+            }}
+            label={
+              <Typography
+                variant="body2"
+                component="p"
+                fontSize={11}
+                fontWeight={600}
+                color="white"
+                sx={{
+                  ml: -1,
+                }}
+              >
+                {serie.first_air_date.split("-")[0]}
+              </Typography>
+            }
+          />
+        </Box>
         <Box 
           display="none"
           sx={{

@@ -13,9 +13,7 @@ export const useSeries = (id:number) => {
 
     const getSerie = async(id:number) => {
         const serie = await getSeriesById(id);
-        if(!serie){
-            return;
-        }
+        
         setSerie(serie);   
     }
 

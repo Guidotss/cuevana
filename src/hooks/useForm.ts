@@ -5,6 +5,7 @@ import { ChangeEvent, KeyboardEventHandler, useState } from 'react';
 export const useForm = (intialState='') => {
 
     const [ input, setInput ] = useState( intialState );
+    const [ loading, setLoading ] = useState(false); 
     const router = useRouter();
 
     const handleChange = (e:ChangeEvent<HTMLInputElement>) => {
@@ -19,11 +20,15 @@ export const useForm = (intialState='') => {
         if( input.trim().length === 0 ) return;
 
         router.push(`/search/${ input }`); 
-        setInput(intialState)
+        setInput(intialState);
+        setLoading(true);
+
     }
+
 
     return {
         input,
+        loading,
 
         handleChange,
         onSubmit,
