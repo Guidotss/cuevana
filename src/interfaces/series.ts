@@ -1,3 +1,5 @@
+import { Genres } from "./movie";
+
 export interface Series {
     adult: boolean;
     backdrop_path: string;
@@ -14,4 +16,5 @@ export interface Series {
     poster_path: string;
     vote_average: number;
     vote_count: number;
+    genres: Genres[];
 }

@@ -22,55 +22,40 @@ const searchPage: NextPage<Props> = ({ movies }) => {
         fontWeight="bold"
         color="white"
         sx={{
-          ml: 11,
-          mt: 3,
-          mb: 5,
+          ml: 20,
+          mt: 5,
         }}
       >
         Search
       </Typography>
-
-      <Grid
-        container
-        display="flex"
-        sx={{
-          mt: 2,
-        }}
-      >
-        <Grid
-          item
-          xs={12}
-          md={8}
-          display="flex"
-          sx={{
-            ml: 8,
-          }}
+      <Grid 
+            container
+            spacing={2}
+            sx={{
+                p:3,
+                ml: 12,
+            }}
         >
+        <Grid display="flex" flexWrap="wrap" item xs={12} md={9}>
           {movies.map((movie: TrendingResults) => {
-            if (!movie.backdrop_path || !movie.release_date) {
-              return null;
-            }
+            if (!movie.poster_path || !movie.release_date) return null;
 
             return <FilmsInfoCard key={movie.id} movie={movie} />;
           })}
         </Grid>
-        <Grid item xs={12} md={3}>
-          <Box
+        <Grid item xs={12} md={2}>
+          <Typography
+            color="#8da0bc"
+            fontWeight="bold"
+            variant="h5"
+            component="h2"
             sx={{
-              ml: 5,
-              mt: 2,
+                mt:-6
             }}
           >
-            <Typography
-              variant="h5"
-              component="h2"
-              fontWeight="bold"
-              color="#8da0bc"
-            >
-              Peliculas Destacadas
-            </Typography>
-          </Box>
-          <FilmsTrendingList />
+            Peliculas Destacadas
+          </Typography>
+            <FilmsTrendingList />
         </Grid>
       </Grid>
     </FilmsLayout>
@@ -85,12 +70,16 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       `/search/multi?api_key=${process.env.API_KEY_TMDB}&query=${q}`
     );
 
-    if (!data) throw new Error("Error al obtener las peliculas");
+    if (!data){
+      return {
+        notFound: true,
+      };
+    }
 
     return {
       props: {
         movies: data.results,
-      },
+      }
     };
   } catch (err) {
     console.log(err);

@@ -1,23 +1,20 @@
-import { useForm, SubmitHandler } from 'react-hook-form';
 import { IconButton, Input, InputAdornment } from '@mui/material';
 import { SearchOutlined } from '@mui/icons-material';
-
-
-
-type Input = {
-    title:string;
-}
+import { useForm } from '@/hooks';
 
 export const FormFilms = () => {
 
-    const { register, handleSubmit, watch, formState:{ errors } } = useForm<Input>();    
+    const { input,loading,onSubmit,handleChange } = useForm();
 
     return (
-        <form>
+            
             <Input
                 type="text"
                 placeholder="Buscar peliculas y series..."
                 disableUnderline
+                value={input}
+                onChange={handleChange}
+                onKeyDown={e => e.key === 'Enter' && onSubmit()}
                 sx={{
                     backgroundColor:'#1e2747',
                     width:600,
@@ -40,6 +37,7 @@ export const FormFilms = () => {
                 endAdornment={
                     <InputAdornment position="end">
                         <IconButton
+                            onClick={onSubmit}
                             sx={{
                                 backgroundColor:'#0f1323',
                                 mr:0.5,
@@ -58,6 +56,6 @@ export const FormFilms = () => {
                     </InputAdornment>
                 }
             />    
-        </form>
+        
     )
 }
