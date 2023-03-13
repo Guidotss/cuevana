@@ -35,7 +35,7 @@ export const HeaderImage: FC<Props> = ({ film }) => {
           src={`https://image.tmdb.org/t/p/original${film.backdrop_path}`}
           alt={film.title!}
           fill
-          loading="eager"
+          loading="lazy"
           priority
           quality={100}
           style={{
