@@ -1,11 +1,12 @@
 import { GetServerSideProps,NextPage } from 'next';
 import { filmsApi } from "@/api";
 import { SerieById } from "@/interfaces";
-import { Box, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import { FilmsLayout } from '@/components/layouts';
 import { HeaderMoviePage } from '@/components/movie';
 import { BasicSelect } from '@/components/ui'
-import Image from 'next/image';
+import { useSelect } from '@/hooks';
+import { useEffect } from 'react';
 
 interface Props {
     serie:SerieById;
@@ -15,13 +16,13 @@ interface Props {
 
 
 const SeriesPage:NextPage<Props> = ({ serie, episodes }) => {
-
+    
     return (
         <FilmsLayout title={`Ver ${ serie.name } 2023 Online gratis - Guivana`} pageDescription={serie.overview}>
             <Box>
                 <HeaderMoviePage serie={serie} />   
             </Box>
-            <Box
+            <Grid container spacing={2}
                 sx={{
                     display:'flex',
                     position:'absolute',
@@ -45,9 +46,9 @@ const SeriesPage:NextPage<Props> = ({ serie, episodes }) => {
                     >
                         Seleccionar temporada
                     </Typography>
-                </Box>
-                <BasicSelect seasons={serie.seasons} episodes={episodes}/> 
-            </Box>
+                </Box>                
+                <BasicSelect seasons={serie.seasons}/> 
+            </Grid>
         </FilmsLayout>
     )
 }
