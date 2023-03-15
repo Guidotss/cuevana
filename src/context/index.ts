@@ -1,2 +1,2 @@
-export  * from './uiContext' 
+export * from './UiContext' 
 export * from './uiReducer';
