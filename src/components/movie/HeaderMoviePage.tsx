@@ -42,7 +42,7 @@ export const HeaderMoviePage: FC<Props> = ({ movie, serie }) => {
             }`}
             alt={movie?.title!}
             fill
-            loading="lazy"
+            loading="eager"
             quality={100}
             style={{
               zIndex: -1,
@@ -60,7 +60,7 @@ export const HeaderMoviePage: FC<Props> = ({ movie, serie }) => {
             }`}
             alt={serie?.name!}
             fill
-            loading="lazy"
+            loading="eager"
             quality={100}
             style={{
               zIndex: -1,
@@ -83,6 +83,7 @@ export const HeaderMoviePage: FC<Props> = ({ movie, serie }) => {
           <Box>
             <Image
               src={`https://image.tmdb.org/t/p/w500${movie?.poster_path || serie?.poster_path}`}
+              loading="eager"
               alt={movie?.title! || serie?.name!}
               height={300}
               width={200}
