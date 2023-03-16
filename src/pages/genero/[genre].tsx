@@ -1,9 +1,9 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { useRouter } from "next/router";
-import { Box, capitalize, Grid, Link, Typography } from "@mui/material";
+import { Box, capitalize, Grid, Typography } from "@mui/material";
 import { filmsApi } from "@/api";
 import { AsignGenreId } from "@/utils";
-import { AxiosMovieResponse, TrendingResults } from "@/interfaces";
+import { AxiosResponse, TrendingResults } from "@/interfaces";
 import { FilmsLayout } from "@/components/layouts";
 import { FilmsInfoCard } from "@/components/movie";
 import { FilmsTrendingList, GenreText } from "@/components/ui";
@@ -115,7 +115,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   let { genre } = ctx.params as { genre: string };
 
   const genreId = AsignGenreId(genre);
-  const { data } = await filmsApi.get<AxiosMovieResponse>(
+  const { data } = await filmsApi.get<AxiosResponse>(
     `discover/movie?api_key=${process.env.API_KEY_TMDB}&language=es-ES&with_genres=${genreId}`
   );
 

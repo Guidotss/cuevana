@@ -1,6 +1,5 @@
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import { filmsApi } from "@/api"
-import { AxiosTrendingResponse } from '@/interfaces/axiosTrendingResponse';
 import { TrendingResults } from "@/interfaces";
 
 export const getMoviesByUrl = async (url: string): Promise<TrendingResults[] | undefined> => {
@@ -8,7 +7,7 @@ export const getMoviesByUrl = async (url: string): Promise<TrendingResults[] | u
         return;
     }
     try {
-        const { data } = await filmsApi.get<AxiosTrendingResponse>(`/${url}?api_key=${process.env.NEXT_PUBLIC_API_KEY_TMDB}&language=es-ES`);
+        const { data } = await filmsApi.get(`/${url}?api_key=${process.env.NEXT_PUBLIC_API_KEY_TMDB}&language=es-ES`);
 
         if (!data.results) {
             return;

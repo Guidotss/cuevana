@@ -1,9 +1,9 @@
+import { FC } from "react";
 import Image from "next/image";
 import { Box, Typography } from "@mui/material";
 import { minTohours } from "@/utils";
-import { CircularProgressWithLabel } from "../ui/CircularProgressWithLabel";
+import { CircularProgressWithLabel } from "@/components/ui";
 import { Movie, SerieById } from "@/interfaces";
-import { FC } from "react";
 
 interface Props {
   movie?: Movie;

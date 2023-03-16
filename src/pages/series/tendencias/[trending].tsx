@@ -1,10 +1,10 @@
 import NextLink from "next/link";
-import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { filmsApi } from "@/api";
-import { AxiosSeriesResponse, Series } from "@/interfaces";
 import { useRouter } from "next/router";
-import { ElevatorSharp } from "@mui/icons-material";
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { Box, Grid, Link, Typography } from "@mui/material";
+
+import { filmsApi } from "@/api";
+import { AxiosResponse, Series } from "@/interfaces";
 import { FilmsLayout } from "@/components/layouts";
 import { SeriesPageList, SeriesTrendingList } from "@/components/series";
 
@@ -156,14 +156,14 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   }
 
   try {
-    const { data } = await filmsApi.get<AxiosSeriesResponse>(
+    const { data } = await filmsApi.get<AxiosResponse>(
       `trending/tv/${trending}?api_key=${process.env.API_KEY_TMDB}&language=es-ES`
     );
 
     if(trending === 'day'){
-      trendingData = await filmsApi.get<AxiosSeriesResponse>(`trending/tv/week?api_key=${process.env.API_KEY_TMDB}&language=es-ES}`);
+      trendingData = await filmsApi.get<AxiosResponse>(`trending/tv/week?api_key=${process.env.API_KEY_TMDB}&language=es-ES}`);
     }else{
-      trendingData = await filmsApi.get<AxiosSeriesResponse>(`trending/tv/day?api_key=${process.env.API_KEY_TMDB}&language=es-ES}`);
+      trendingData = await filmsApi.get<AxiosResponse>(`trending/tv/day?api_key=${process.env.API_KEY_TMDB}&language=es-ES}`);
     }
 
     if (!data) {

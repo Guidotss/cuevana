@@ -5,8 +5,6 @@ import { Box, Grid, Typography } from "@mui/material";
 import { FilmsLayout } from "@/components/layouts";
 import { HeaderMoviePage } from "@/components/movie";
 import { BasicSelect } from "@/components/ui";
-import { useContext } from 'react';
-import { UiContext } from "@/context";
 
 
 interface Props {

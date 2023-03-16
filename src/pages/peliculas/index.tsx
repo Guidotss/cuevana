@@ -1,12 +1,11 @@
-import NextLink from "next/link";
 import { GetStaticProps, NextPage } from "next";
+import NextLink from "next/link";
+import { Box, Grid, Link, Typography } from "@mui/material";
 import { FilmsLayout } from "@/components/layouts";
-import { Box, Chip, Grid, Link, Typography } from "@mui/material";
-import { TrendingResults } from "../../interfaces/trendingResults";
+import { TrendingResults,AxiosResponse } from "@/interfaces";
 import { filmsApi } from "@/api";
-import { AxiosTrendingResponse } from "../../interfaces/axiosTrendingResponse";
-import { FilmsInfoCard } from "@/components/movie/FilmsInfoCard";
-import { FilmsTrendingList } from "../../components/ui/FilmsTrendingList";
+import { FilmsInfoCard } from "@/components/movie";
+import { FilmsTrendingList } from "@/components/ui";
 
 interface Props {
   movies: TrendingResults[];
@@ -120,7 +119,7 @@ const FilmsPage: NextPage<Props> = ({ movies }) => {
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   try {
-    const { data } = await filmsApi.get<AxiosTrendingResponse>(
+    const { data } = await filmsApi.get<AxiosResponse>(
       `movie/now_playing?api_key=${process.env.API_KEY_TMDB}&language=es-ES`
     );
     if (!data) {

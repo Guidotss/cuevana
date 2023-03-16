@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { GetStaticProps, NextPage } from "next";
-import { FilmsLayout } from "@/components/layouts";
 import { Box, Button, Grid, Typography } from "@mui/material";
+import { FilmsLayout } from "@/components/layouts";
 import { filmsApi } from "@/api";
-import { AxiosTrendingResponse, Series, TrendingResults } from "@/interfaces";
+import { AxiosResponse, Series, TrendingResults } from "@/interfaces";
 import { FilmsSelector,FilmsTrendingList,SeriesList,HeaderImage } from '@/components/ui';
 
 
@@ -165,10 +165,10 @@ const HomePage: NextPage<Props> = ({ films, series }) => {
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   try {
-    const topRatedFilms = await filmsApi.get<AxiosTrendingResponse>(
+    const topRatedFilms = await filmsApi.get<AxiosResponse>(
       `trending/movie/day?api_key=${process.env.API_KEY_TMDB}&language=es-ES`
     );
-    const topRatedSeries = await filmsApi.get<AxiosTrendingResponse>(
+    const topRatedSeries = await filmsApi.get<AxiosResponse>(
       `trending/tv/day?api_key=${process.env.API_KEY_TMDB}&language=es-ES`
     );
 

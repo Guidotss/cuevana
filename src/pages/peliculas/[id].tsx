@@ -1,20 +1,19 @@
 import { GetServerSideProps, NextPage } from "next";
 import { Box, Grid, Typography } from "@mui/material";
 import { filmsApi } from "@/api";
-import { Movie,TrendingResults,Video,AxiosAnotherMoviesResponse,AxiosMovieResponse,AxiosSimilarMoviesResponse,AxiosVideoResponse,} from "@/interfaces";
+import { Movie,TrendingResults,AxiosResponse } from "@/interfaces";
 import { FilmsLayout } from "@/components/layouts";
 import { FilmsTrendingList,} from "@/components/ui";
-import { AnotherMovieList,HeaderMoviePage,VideoMoviePage,SimilarMovieList } from "@/components/movie";
+import { AnotherMovieList,HeaderMoviePage,SimilarMovieList } from "@/components/movie";
 
 
 interface Props {
   movie: Movie;
-  video: Video;
   similarMovies: TrendingResults[];
   anothersMovies: TrendingResults[];
 }
 
-const FilmPage: NextPage<Props> = ({movie,video,similarMovies,anothersMovies,}) => { 
+const FilmPage: NextPage<Props> = ({movie,similarMovies,anothersMovies,}) => { 
   
   const similarMoviesSplited = similarMovies?.slice(0, 5);
   const anothersMoviesSplited = anothersMovies?.slice(0, 5);
@@ -25,10 +24,7 @@ const FilmPage: NextPage<Props> = ({movie,video,similarMovies,anothersMovies,}) 
       pageDescription={movie.overview}
       imageFullUrl={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
     >
-      <HeaderMoviePage movie={movie} />
-      <Box display="flex" justifyContent="center">
-        <VideoMoviePage video={video} videoTitle={movie.title} />
-      </Box>
+      <HeaderMoviePage movie={movie}/> 
       <Grid
         container
         sx={{
@@ -102,25 +98,20 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { id } = ctx.params as { id: string };
 
   try {
-    const { data } = await filmsApi.get<AxiosMovieResponse>(
+    const { data } = await filmsApi.get<AxiosResponse>(
       `movie/${id}?api_key=${process.env.API_KEY_TMDB}&language=es-ES`
     );
 
     if (!data) throw new Error("No se encontro la pelicula");
 
-    const { data: video } = await filmsApi.get<AxiosVideoResponse>(
-      `movie/${id}/videos?api_key=${process.env.API_KEY_TMDB}&language=es-ES`
-    );
-    if (!video.results) throw new Error("No se encontro el video");
- 
-    const { data: similar } = await filmsApi.get<AxiosSimilarMoviesResponse>(
+    const { data: similar } = await filmsApi.get<AxiosResponse>(
       `movie/${id}/similar?api_key=${process.env.API_KEY_TMDB}&language=es-ES&page=1`
     );
 
     const movie = JSON.parse(JSON.stringify(data));
     const similarMovies = JSON.parse(JSON.stringify(similar.results));
 
-    const { data: anothers } = await filmsApi.get<AxiosAnotherMoviesResponse>(
+    const { data: anothers } = await filmsApi.get<AxiosResponse>(
       `movie/popular?api_key=${process.env.API_KEY_TMDB}&language=es-ES&page=1`
     );
     
@@ -128,7 +119,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     return {
       props: {
         movie: movie || null,
-        video: video.results[0] || null,
         similarMovies: similarMovies || null,
         anothersMovies: anothersMovies || null,
       },

@@ -1,10 +1,10 @@
 import { GetServerSideProps, NextPage } from "next";
-import { AxiosMovieResponse, TrendingResults } from "@/interfaces";
-import { Box, Grid, Typography } from "@mui/material";
+import { AxiosResponse, TrendingResults } from "@/interfaces";
+import { Grid, Typography } from "@mui/material";
 import { filmsApi } from "@/api";
 import { FilmsInfoCard } from "@/components/movie";
 import { FilmsLayout } from "@/components/layouts";
-import { FilmsTrendingList } from "../../components/ui/FilmsTrendingList";
+import { FilmsTrendingList } from "@/components/ui";
 
 interface Props {
   movies: TrendingResults[];
@@ -66,7 +66,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { q = "" } = ctx.params as { q: string };
 
   try {
-    const { data } = await filmsApi.get<AxiosMovieResponse>(
+    const { data } = await filmsApi.get<AxiosResponse>(
       `/search/multi?api_key=${process.env.API_KEY_TMDB}&query=${q}`
     );
 

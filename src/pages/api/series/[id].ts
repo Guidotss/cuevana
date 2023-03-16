@@ -1,5 +1,5 @@
-import { filmsApi } from '@/api';
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { filmsApi } from '@/api';
 import { Series } from '@/interfaces/series';
 
 type Data = 

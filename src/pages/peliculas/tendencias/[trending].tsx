@@ -4,7 +4,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { Box, Grid, Link, Typography } from "@mui/material";
 import { filmsApi } from "@/api";
 import { FilmsLayout } from "@/components/layouts";
-import { AxiosTrendingResponse, TrendingResults } from "@/interfaces";
+import { AxiosResponse, TrendingResults } from "@/interfaces";
 import { FilmsInfoCard } from "@/components/movie";
 import { FilmsTrendingList } from "@/components/ui";
 
@@ -160,7 +160,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
       trending = "day";
     }
 
-    const { data } = await filmsApi.get<AxiosTrendingResponse>(
+    const { data } = await filmsApi.get<AxiosResponse>(
       `/trending/movie/${trending}?api_key=${process.env.API_KEY_TMDB}&language=es-ES`
     );
 

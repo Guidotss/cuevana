@@ -1,11 +1,11 @@
 import NextLink from "next/link";
 import { GetStaticProps, NextPage } from "next";
-import { filmsApi } from "@/api";
-import { Series, AxiosSeriesResponse } from "@/interfaces";
 import { Box, Grid, Link, Typography } from "@mui/material";
+import { filmsApi } from "@/api";
+import { Series, AxiosResponse } from "@/interfaces";
 import { FilmsLayout } from "@/components/layouts";
-import { SeriesPageList } from "@/components/series";
-import { SeriesTrendingList } from "../../components/series/SeriesTrendingList";
+import { SeriesPageList,SeriesTrendingList } from "@/components/series";
+
 
 interface Props {
   series: Series[];
@@ -124,7 +124,7 @@ const UpcomingPage: NextPage<Props> = ({ series,trendingDay,trendingWeek }) => {
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   try {
-    const { data } = await filmsApi.get<AxiosSeriesResponse>(
+    const { data } = await filmsApi.get<AxiosResponse>(
       `tv/popular?api_key=${process.env.API_KEY_TMDB}&language=es-ES`
     );
 
@@ -133,10 +133,10 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
         notFound: true,
       };
     }
-    const { data: trendingDay } = await filmsApi.get<AxiosSeriesResponse>(
+    const { data: trendingDay } = await filmsApi.get<AxiosResponse>(
       `trending/tv/day?api_key=${process.env.API_KEY_TMDB}&language=es-ES`
     );
-    const { data: trendingWeek } = await filmsApi.get<AxiosSeriesResponse>(
+    const { data: trendingWeek } = await filmsApi.get<AxiosResponse>(
       `trending/tv/week?api_key=${process.env.API_KEY_TMDB}&language=es-ES`
     );
 

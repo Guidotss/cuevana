@@ -1,6 +1,5 @@
 import { filmsApi } from "@/api"
-import { AxiosMovieResponse, } from '@/interfaces';
-import { Movie } from '../interfaces/movie';
+import { Movie } from '@/interfaces';
 
 
 export const getMovieById = async (id: number): Promise<Movie | undefined> => {

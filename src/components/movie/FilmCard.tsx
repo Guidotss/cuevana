@@ -1,10 +1,10 @@
 import { FC } from 'react'; 
 import Image from 'next/image';
 import NextLink from 'next/link';
+import { useRouter } from 'next/router';
 import { PlayCircleOutlineOutlined } from '@mui/icons-material';
 import { Box, Link, Typography } from '@mui/material';
-import { TrendingResults } from '../../interfaces/trendingResults';
-import { useRouter } from 'next/router';
+import { TrendingResults } from '@/interfaces/';
 
 interface Props {
     movie: TrendingResults; 

@@ -2,7 +2,7 @@ import NextLink from "next/link";
 import { NextPage, GetStaticProps } from "next";
 import { Box, Grid, Link, Typography } from "@mui/material";
 import { filmsApi } from "@/api";
-import { AxiosTrendingResponse, TrendingResults } from "@/interfaces";
+import { AxiosResponse, TrendingResults } from "@/interfaces";
 import { FilmsLayout } from "@/components/layouts";
 import { FilmsTrendingList } from "@/components/ui";
 import { FilmsInfoCard } from "@/components/movie";
@@ -115,7 +115,7 @@ const UpcomingPage: NextPage<Props> = ({ movies }) => {
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   try {
-    const { data } = await filmsApi.get<AxiosTrendingResponse>(
+    const { data } = await filmsApi.get<AxiosResponse>(
       `/movie/upcoming?api_key=${process.env.API_KEY_TMDB}&language=es-ES`
     );
     if (!data) {

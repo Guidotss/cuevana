@@ -1,9 +1,9 @@
 import { FC, useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { Box, Chip, Grid, Typography } from "@mui/material";
+import { Box, Chip, Typography } from "@mui/material";
 import { HoverInfoCard } from "@/components/ui";
-import { TrendingResults } from "@/interfaces/trendingResults";
+import { TrendingResults } from "@/interfaces";
 
 interface Props {
   movie: TrendingResults;

@@ -1,6 +1,5 @@
 import { localFilmsApi } from '@/api';
 import { Series } from '@/interfaces/series';
-import { AxiosSeriesResponse } from '../interfaces/axiosSeriesResponse';
 
 export const getSeriesById = async(id:number):Promise<Series | undefined> => {
 
