@@ -10,7 +10,7 @@ interface Props {
 
 export const BasicSelect: FC<Props> = ({ seasons }) => {
 
-  const { handleChange,season } = useSelect(); 
+  const { handleChange,seasonSelect } = useSelect(); 
 
   return (
     <Box>
@@ -45,7 +45,7 @@ export const BasicSelect: FC<Props> = ({ seasons }) => {
               }}
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={season}
+              value={seasonSelect}
               label="Age"
               onChange={handleChange}
             >

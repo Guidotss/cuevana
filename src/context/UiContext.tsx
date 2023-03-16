@@ -1,8 +1,10 @@
 import { createContext } from 'react';
 
 interface UiContextProps {
-    season:string | number;
-    setSeason: (season:string | number) => void;
+    season:string ;
+    loading:boolean;
+
+    setSeason: ( season:string ) => void;
 }
 
 

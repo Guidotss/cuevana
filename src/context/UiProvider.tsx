@@ -6,22 +6,33 @@ interface UiProviderProps {
 }
 
 export interface UiState {
-    season:string | number;
+    season:string ;
+    loading:boolean;
 }
 
 const UI_INITIAL_STATE:UiState = {
-    season:1
+    season:"Especiales",
+    loading: false
 }
 
 export const UiProvider:FC<UiProviderProps> = ({ children }) => {
     
-    const [state,dispatch] = useReducer(uiReducer,UI_INITIAL_STATE);
+    const [ state,dispatch ] = useReducer(uiReducer,UI_INITIAL_STATE);
+
+    
+    const setSeason = ( season:string ) => {
+        dispatch({
+            type:"[UI] - Set Season",
+            payload:season
+        }); 
+    }
 
     return (
         <UiContext.Provider value={{
             ...state,
 
-            setSeason: (season:string | number) => {}
+
+            setSeason
         }}>
             {children}
         </UiContext.Provider>
