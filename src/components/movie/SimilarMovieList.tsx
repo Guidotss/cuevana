@@ -1,23 +1,21 @@
-import { FC } from 'react';
+import { FC } from "react";
 import Image from "next/image";
 import NextLink from "next/link";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 import { PlayCircleOutlineOutlined } from "@mui/icons-material";
-import { Box,Link } from "@mui/material";
-import { TrendingResults } from '@/interfaces';
-
+import { Box, Link } from "@mui/material";
+import { TrendingResults } from "@/interfaces";
 
 interface Props {
-    similarMovies: TrendingResults[]; 
+  similarMovies: TrendingResults[];
 }
 
+export const SimilarMovieList: FC<Props> = ({ similarMovies }) => {
+  const router = useRouter();
 
-export const SimilarMovieList:FC<Props> = ({ similarMovies }) => {
-    const router = useRouter(); 
-    
-    const onNavigate = ( id:number ) => {
-      router.push(`/peliculas/${id}`); 
-    }
+  const onNavigate = (id: number) => {
+    router.push(`/peliculas/${id}`);
+  };
 
   return (
     <>

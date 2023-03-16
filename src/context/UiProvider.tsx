@@ -1,40 +1,39 @@
-import { FC, useReducer } from 'react';
-import { UiContext,uiReducer } from './';
+import { FC, useReducer } from "react";
+import { UiContext, uiReducer } from "./";
 
 interface UiProviderProps {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }
 
 export interface UiState {
-    season:string ;
-    loading:boolean;
+  season: string;
+  loading: boolean;
 }
 
-const UI_INITIAL_STATE:UiState = {
-    season:"Especiales",
-    loading: false
-}
+const UI_INITIAL_STATE: UiState = {
+  season: "Especiales",
+  loading: false,
+};
 
-export const UiProvider:FC<UiProviderProps> = ({ children }) => {
-    
-    const [ state,dispatch ] = useReducer(uiReducer,UI_INITIAL_STATE);
+export const UiProvider: FC<UiProviderProps> = ({ children }) => {
+  const [state, dispatch] = useReducer(uiReducer, UI_INITIAL_STATE);
 
-    
-    const setSeason = ( season:string ) => {
-        dispatch({
-            type:"[UI] - Set Season",
-            payload:season
-        }); 
-    }
+  const setSeason = (season: string) => {
+    dispatch({
+      type: "[UI] - Set Season",
+      payload: season,
+    });
+  };
 
-    return (
-        <UiContext.Provider value={{
-            ...state,
+  return (
+    <UiContext.Provider
+      value={{
+        ...state,
 
-
-            setSeason
-        }}>
-            {children}
-        </UiContext.Provider>
-    )
-}
+        setSeason,
+      }}
+    >
+      {children}
+    </UiContext.Provider>
+  );
+};

@@ -1,31 +1,25 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { Series } from "@/interfaces/series";
-import { Box, Chip, Link, Typography } from "@mui/material";
 import { PlayCircleOutlineOutlined } from "@mui/icons-material";
-import HoverSeriesInfo from './HoverSeriesInfo';
-
+import { Box, Chip, Typography } from "@mui/material";
+import { Series } from "@/interfaces/series";
+import HoverSeriesInfo from "./HoverSeriesInfo";
 
 interface Props {
   serie: Series;
 }
 
 export const SeriesCard: FC<Props> = ({ serie }) => {
-  
-  const [ id, setId ] = useState<number>(0);
   const router = useRouter();
-  
+
   const navigateToSerie = () => {
     router.push(`/series/${serie.id}`);
   };
-  
-
 
   return (
     <Box
       onClick={navigateToSerie}
-      onMouseEnter={() => setId(serie.id)}
       sx={{
         "&:hover": {
           cursor: "pointer",
@@ -38,7 +32,6 @@ export const SeriesCard: FC<Props> = ({ serie }) => {
           "& > div > div": {
             display: "flex",
           },
-          
         },
       }}
     >
@@ -61,10 +54,7 @@ export const SeriesCard: FC<Props> = ({ serie }) => {
             display: "none",
           }}
         />
-        <Box 
-          display="flex" 
-          justifyContent="space-between"
-        >
+        <Box display="flex" justifyContent="space-between">
           <Chip
             sx={{
               position: "absolute",
@@ -94,7 +84,7 @@ export const SeriesCard: FC<Props> = ({ serie }) => {
             sx={{
               position: "absolute",
               mt: 35,
-              ml:-5,
+              ml: -5,
               height: 15,
               width: 35,
             }}
@@ -114,16 +104,16 @@ export const SeriesCard: FC<Props> = ({ serie }) => {
             }
           />
         </Box>
-        <Box 
+        <Box
           display="none"
           sx={{
             position: "absolute",
-            mt:45,
-            ml:-30
+            mt: 45,
+            ml: -30,
           }}
         >
-          <HoverSeriesInfo serieId={serie.id} serie={ serie } />
-      </Box>
+          <HoverSeriesInfo serieId={serie.id} serie={serie} />
+        </Box>
       </Box>
       <Box
         display="flex"

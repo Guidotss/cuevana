@@ -10,7 +10,6 @@ interface Props {
 }
 
 export const FilmsInfoCard: FC<Props> = ({ movie }) => {
-  const [isMouseEnter, setIsMouseEnter] = useState(true);
   const [movieInfo, setMovieInfo] = useState({
     filmId: 0,
     genre_ids: [] as number[],

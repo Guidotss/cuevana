@@ -11,8 +11,7 @@ interface Props {
 }
 
 export const HeaderMoviePage: FC<Props> = ({ movie, serie }) => {
-
-  console.log(serie); 
+  console.log(serie);
 
   return (
     <Box display="flex">
@@ -82,7 +81,9 @@ export const HeaderMoviePage: FC<Props> = ({ movie, serie }) => {
         >
           <Box>
             <Image
-              src={`https://image.tmdb.org/t/p/w500${movie?.poster_path || serie?.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w500${
+                movie?.poster_path || serie?.poster_path
+              }`}
               loading="eager"
               alt={movie?.title! || serie?.name!}
               height={300}
@@ -150,7 +151,8 @@ export const HeaderMoviePage: FC<Props> = ({ movie, serie }) => {
                     ml: 1,
                   }}
                 >
-                  {serie?.first_air_date?.split("-")[0] || movie?.release_date?.split("-")[0]}
+                  {serie?.first_air_date?.split("-")[0] ||
+                    movie?.release_date?.split("-")[0]}
                 </Typography>
               </Box>
             </Box>
@@ -160,7 +162,9 @@ export const HeaderMoviePage: FC<Props> = ({ movie, serie }) => {
                 width: "85%",
               }}
             >
-              <Typography color="#8da0bc">{movie?.overview || serie?.overview}</Typography>
+              <Typography color="#8da0bc">
+                {movie?.overview || serie?.overview}
+              </Typography>
             </Box>
             <Box
               display="flex"
@@ -169,39 +173,35 @@ export const HeaderMoviePage: FC<Props> = ({ movie, serie }) => {
               }}
             >
               <Typography color="#8da0bc">Genero:</Typography>
-              {
-                movie
-                  ? (
-                    <Box display="flex" gap={1} sx={{ ml: 1 }} alignItems="center">
-                      {movie?.genres.map((genre) => (
-                        <Typography
-                          key={genre.id}
-                          color="white"
-                          variant="body2"
-                          component="p"
-                          fontWeight={200}
-                        >
-                          {genre.name}
-                        </Typography>
-                      ))}
-                    </Box>
-                  )
-                  :(
-                    <Box display="flex" gap={1} sx={{ ml: 1 }} alignItems="center">
-                    {serie?.genres.map((genre) => (
-                      <Typography
-                        key={genre.id}
-                        color="white"
-                        variant="body2"
-                        component="p"
-                        fontWeight={200}
-                      >
-                        {genre.name}
-                      </Typography>
-                    ))}
-                  </Box>
-                  )
-              }
+              {movie ? (
+                <Box display="flex" gap={1} sx={{ ml: 1 }} alignItems="center">
+                  {movie?.genres.map((genre) => (
+                    <Typography
+                      key={genre.id}
+                      color="white"
+                      variant="body2"
+                      component="p"
+                      fontWeight={200}
+                    >
+                      {genre.name}
+                    </Typography>
+                  ))}
+                </Box>
+              ) : (
+                <Box display="flex" gap={1} sx={{ ml: 1 }} alignItems="center">
+                  {serie?.genres.map((genre) => (
+                    <Typography
+                      key={genre.id}
+                      color="white"
+                      variant="body2"
+                      component="p"
+                      fontWeight={200}
+                    >
+                      {genre.name}
+                    </Typography>
+                  ))}
+                </Box>
+              )}
             </Box>
           </Box>
         </Box>

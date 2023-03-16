@@ -6,14 +6,12 @@ import { FilmsLayout } from "@/components/layouts";
 import { HeaderMoviePage } from "@/components/movie";
 import { BasicSelect } from "@/components/ui";
 
-
 interface Props {
   serie: SerieById;
   episodes: any;
 }
 
 const SeriesPage: NextPage<Props> = ({ serie, episodes }) => {
-
   return (
     <FilmsLayout
       title={`Ver ${serie.name} 2023 Online gratis - Guivana`}
@@ -37,7 +35,7 @@ const SeriesPage: NextPage<Props> = ({ serie, episodes }) => {
           sx={{
             backgroundColor: "#141a32",
             borderRadius: 1,
-            mt:25
+            mt: 25,
           }}
         >
           <Typography
@@ -50,7 +48,7 @@ const SeriesPage: NextPage<Props> = ({ serie, episodes }) => {
           >
             Seleccionar temporada
           </Typography>
-          <BasicSelect seasons={ serie.seasons } />
+          <BasicSelect seasons={serie.seasons} />
         </Box>
       </Grid>
     </FilmsLayout>
@@ -58,7 +56,6 @@ const SeriesPage: NextPage<Props> = ({ serie, episodes }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-
   const { id } = ctx.params as { id: string };
   const seasonsEpisodes = [];
 

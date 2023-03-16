@@ -1,16 +1,14 @@
 import { FC } from "react";
 import NextLink from "next/link";
 import Image from "next/image";
-import { Box, capitalize, Chip, Link, Typography } from "@mui/material";
-import { TrendingResults } from "@/interfaces/trendingResults";
+import { Box, Chip, Link, Typography } from "@mui/material";
+import { TrendingResults } from "@/interfaces";
 
 interface Props {
   film: TrendingResults;
 }
 
 export const HeaderImage: FC<Props> = ({ film }) => {
-
-  
   return (
     <Box>
       <Box
@@ -35,7 +33,7 @@ export const HeaderImage: FC<Props> = ({ film }) => {
           src={`https://image.tmdb.org/t/p/original${film.backdrop_path}`}
           alt={film.title!}
           fill
-          loading="lazy"
+          loading="eager"
           quality={100}
           style={{
             zIndex: -1,
@@ -51,7 +49,7 @@ export const HeaderImage: FC<Props> = ({ film }) => {
             display: "flex",
             "&:hover": {
               transform: "translateX(0.1rem) translateY(-0.1rem)",
-              transition:'all 0.1s ease-in-out'
+              transition: "all 0.1s ease-in-out",
             },
           }}
         >
@@ -114,7 +112,6 @@ export const HeaderImage: FC<Props> = ({ film }) => {
             sx={{
               alignSelf: "flex-end",
             }}
-
           >
             10
           </Typography>
@@ -125,32 +122,24 @@ export const HeaderImage: FC<Props> = ({ film }) => {
             fontWeight={300}
             sx={{
               alignSelf: "flex-end",
-              ml:3
+              ml: 3,
             }}
           >
-            Estreno: { film.release_date }
+            Estreno: {film.release_date}
           </Typography>
         </Box>
         <Box
           sx={{
             width: "50%",
-            mt:2,
-            ml:3
+            mt: 2,
+            ml: 3,
           }}
         >
-          <Typography
-            variant="body1"
-            color="#8da0bc"
-            fontWeight={400}
-          >
-            { film.overview }
+          <Typography variant="body1" color="#8da0bc" fontWeight={400}>
+            {film.overview}
           </Typography>
         </Box>
-        <NextLink
-          href={`/peliculas/${film.id}`}
-          passHref
-          legacyBehavior
-        >
+        <NextLink href={`/peliculas/${film.id}`} passHref legacyBehavior>
           <Link
             type="button"
             sx={{
@@ -159,7 +148,7 @@ export const HeaderImage: FC<Props> = ({ film }) => {
               backgroundColor: "#007aff",
               width: "10rem",
               textAlign: "center",
-              borderRadius:5,
+              borderRadius: 5,
               height: "40px",
             }}
           >
@@ -168,7 +157,7 @@ export const HeaderImage: FC<Props> = ({ film }) => {
               color="white"
               fontWeight={500}
               sx={{
-                mt:1
+                mt: 1,
               }}
             >
               Ver Película

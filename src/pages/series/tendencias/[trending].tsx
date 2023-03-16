@@ -13,7 +13,7 @@ interface Props {
   trendingData: Series[];
 }
 
-const TrendingPage: NextPage<Props> = ({ series,trendingData }) => {
+const TrendingPage: NextPage<Props> = ({ series, trendingData }) => {
   const router = useRouter();
   const { trending } = router.query;
 
@@ -101,14 +101,10 @@ const TrendingPage: NextPage<Props> = ({ series,trendingData }) => {
               </Box>
             </Box>
             <Box>
-              <SeriesPageList series={series}/>
+              <SeriesPageList series={series} />
             </Box>
           </Grid>
-          <Grid 
-            item 
-            xs={12}
-            md={2}
-          >
+          <Grid item xs={12} md={2}>
             <Box>
               <Typography
                 variant="h5"
@@ -123,7 +119,10 @@ const TrendingPage: NextPage<Props> = ({ series,trendingData }) => {
                 Series Destacadas
               </Typography>
             </Box>
-            <SeriesTrendingList trendingDay={series} trendingWeek={trendingData}/>
+            <SeriesTrendingList
+              trendingDay={series}
+              trendingWeek={trendingData}
+            />
           </Grid>
         </Grid>
       </Box>
@@ -146,7 +145,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   let { trending } = ctx.params as { trending: string };
-  let trendingData; 
+  let trendingData;
 
   if (trending === "diarias") {
     trending = "day";
@@ -160,10 +159,14 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
       `trending/tv/${trending}?api_key=${process.env.API_KEY_TMDB}&language=es-ES`
     );
 
-    if(trending === 'day'){
-      trendingData = await filmsApi.get<AxiosResponse>(`trending/tv/week?api_key=${process.env.API_KEY_TMDB}&language=es-ES}`);
-    }else{
-      trendingData = await filmsApi.get<AxiosResponse>(`trending/tv/day?api_key=${process.env.API_KEY_TMDB}&language=es-ES}`);
+    if (trending === "day") {
+      trendingData = await filmsApi.get<AxiosResponse>(
+        `trending/tv/week?api_key=${process.env.API_KEY_TMDB}&language=es-ES}`
+      );
+    } else {
+      trendingData = await filmsApi.get<AxiosResponse>(
+        `trending/tv/day?api_key=${process.env.API_KEY_TMDB}&language=es-ES}`
+      );
     }
 
     if (!data) {
@@ -176,7 +179,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
       props: {
         series: data.results,
         trendingData: trendingData.data.results,
-        
       },
       revalidate: 60 * 60 * 24,
     };

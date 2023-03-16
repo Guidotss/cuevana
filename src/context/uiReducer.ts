@@ -1,20 +1,16 @@
 import { UiState } from "./UiProvider";
 
-type UiActionType = 
-    | { type: "[UI] - Set Season", payload: string }
+type UiActionType = { type: "[UI] - Set Season"; payload: string };
 
 export const uiReducer = (state: UiState, action: UiActionType): UiState => {
-    switch (action.type) {
-        case "[UI] - Set Season":
-            return {
-                ...state,
-                season: action.payload
-            }
-            
-        default:
-            return state;
-    }
-}
+  switch (action.type) {
+    case "[UI] - Set Season":
+      return {
+        ...state,
+        season: action.payload,
+      };
 
-
-
+    default:
+      return state;
+  }
+};

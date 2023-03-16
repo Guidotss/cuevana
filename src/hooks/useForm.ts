@@ -1,37 +1,30 @@
-import { useRouter } from 'next/router';
-import { ChangeEvent, KeyboardEventHandler, useState } from 'react';
+import { ChangeEvent, useState } from "react";
+import { useRouter } from "next/router";
 
+export const useForm = (intialState = "") => {
+  const [input, setInput] = useState(intialState);
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
-export const useForm = (intialState='') => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { target } = e;
 
-    const [ input, setInput ] = useState( intialState );
-    const [ loading, setLoading ] = useState(false); 
-    const router = useRouter();
+    setInput(target.value);
+  };
 
-    const handleChange = (e:ChangeEvent<HTMLInputElement>) => {
-        const { target } = e;
+  const onSubmit = () => {
+    if (input.trim().length === 0) return;
 
-        setInput(target.value)
-    }
+    router.push(`/search/${input}`);
+    setInput(intialState);
+    setLoading(true);
+  };
 
+  return {
+    input,
+    loading,
 
-    const onSubmit = () => {
-        
-        if( input.trim().length === 0 ) return;
-
-        router.push(`/search/${ input }`); 
-        setInput(intialState);
-        setLoading(true);
-
-    }
-
-
-    return {
-        input,
-        loading,
-
-        handleChange,
-        onSubmit,
-
-    }
-}
+    handleChange,
+    onSubmit,
+  };
+};

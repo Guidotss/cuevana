@@ -1,6 +1,6 @@
-import NextLink from 'next/link';
-import { Box, Grid, Link, List, Typography } from "@mui/material";
 import { FC } from "react"
+import NextLink from 'next/link';
+import { Box, Grid, Link, Typography } from "@mui/material";
 
 interface Props {
     isOpen: boolean;

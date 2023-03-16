@@ -21,14 +21,14 @@ const SeriesPage: NextPage<Props> = ({ series, trendingDay, trendingWeek }) => {
       <Box
         sx={{
           mt: 10,
-          ml: {xs: 10, md: 7},
+          ml: { xs: 10, md: 7 },
           mb: 3,
         }}
       >
-        <Typography 
-          variant="h4" 
-          component="h1" 
-          color="white" 
+        <Typography
+          variant="h4"
+          component="h1"
+          color="white"
           fontWeight="bold"
           sx={{
             mb: 2,
@@ -85,14 +85,10 @@ const SeriesPage: NextPage<Props> = ({ series, trendingDay, trendingWeek }) => {
         <Grid item xs={12} md={9}>
           <SeriesPageList series={series} />
         </Grid>
-        <Grid 
-          item 
-          xs={12} 
-          md={2}
-        >
+        <Grid item xs={12} md={2}>
           <Box
             sx={{
-              mt:-15,
+              mt: -15,
             }}
           >
             <Typography
@@ -101,7 +97,7 @@ const SeriesPage: NextPage<Props> = ({ series, trendingDay, trendingWeek }) => {
               color="#8da0bc"
               fontWeight="bold"
               sx={{
-                mb:4,
+                mb: 4,
               }}
             >
               Series Destacadas
@@ -116,9 +112,6 @@ const SeriesPage: NextPage<Props> = ({ series, trendingDay, trendingWeek }) => {
     </FilmsLayout>
   );
 };
-
-
-
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const { data } = await filmsApi.get<AxiosResponse>(

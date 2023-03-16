@@ -12,19 +12,18 @@ import {
   Input,
   IconButton,
 } from "@mui/material";
-import { SearchOutlined, KeyboardArrowDownOutlined, Opacity } from "@mui/icons-material";
+import {
+  SearchOutlined,
+  KeyboardArrowDownOutlined,
+} from "@mui/icons-material";
 import { FilmsMenu } from "./FilmsMenu";
-import { GenreMenu } from './GenreMenu';
+import { GenreMenu } from "./GenreMenu";
 import { SeriesMenu } from "./SeriesMenu";
 import { useForm } from "@/hooks";
 
 export const Navbar = () => {
-
   const router = useRouter();
   const { input, handleChange, onSubmit } = useForm();
-
-  
-
 
   const [isMouseEnter, setIsMouseEnter] = useState({
     isMouseFilmsEnter: false,
@@ -32,9 +31,8 @@ export const Navbar = () => {
     isMouseSeriesEnter: false,
   });
 
-
   return (
-    <AppBar> 
+    <AppBar>
       <Toolbar>
         <Box display="flex" justifyContent="center" alignItems="center">
           <Image
@@ -47,8 +45,8 @@ export const Navbar = () => {
               marginTop: 6,
             }}
           />
-          <NextLink href='/' passHref legacyBehavior>
-            <Link sx={{display:"flex", alignItems:"center"}}>
+          <NextLink href="/" passHref legacyBehavior>
+            <Link sx={{ display: "flex", alignItems: "center" }}>
               <Typography
                 variant="h4"
                 component="h4"
@@ -95,82 +93,106 @@ export const Navbar = () => {
               </Typography>
             </Link>
           </NextLink>
-          <Box 
-            onMouseEnter={() => setIsMouseEnter({isMouseSeriesEnter:false,isMouseFilmsEnter:true, isMouseGenreEnter: false})}
-            onMouseLeave={() => setIsMouseEnter({...isMouseEnter,isMouseFilmsEnter:false})}
-        >
+          <Box
+            onMouseEnter={() =>
+              setIsMouseEnter({
+                isMouseSeriesEnter: false,
+                isMouseFilmsEnter: true,
+                isMouseGenreEnter: false,
+              })
+            }
+            onMouseLeave={() =>
+              setIsMouseEnter({ ...isMouseEnter, isMouseFilmsEnter: false })
+            }
+          >
             <NextLink href="/peliculas" passHref legacyBehavior>
-                <Link
+              <Link
                 sx={{
-                    "&:hover": {
+                  "&:hover": {
                     color: "#007aff",
-                    },
+                  },
                 }}
-                >
+              >
                 <Box display="flex">
-                    <Typography
+                  <Typography
                     variant="h6"
                     component="h6"
                     fontWeight={400}
                     fontSize={15}
-                    >
+                  >
                     Peliculas
-                    </Typography>
-                    <IconButton>
+                  </Typography>
+                  <IconButton>
                     <KeyboardArrowDownOutlined
-                        fontSize="small"
-                        sx={{
+                      fontSize="small"
+                      sx={{
                         color: "blue",
                         mt: "-5px",
                         ml: "-8px",
                         mr: "-5px",
-                        }}
+                      }}
                     />
-                    </IconButton>
+                  </IconButton>
                 </Box>
-                </Link>
+              </Link>
             </NextLink>
             <FilmsMenu isOpen={isMouseEnter.isMouseFilmsEnter} />
           </Box>
           <Box
-            onMouseEnter={() => setIsMouseEnter({ isMouseSeriesEnter:false,isMouseFilmsEnter:false, isMouseGenreEnter: true })}
-            onMouseLeave={() => setIsMouseEnter({ ...isMouseEnter, isMouseGenreEnter: false })}
+            onMouseEnter={() =>
+              setIsMouseEnter({
+                isMouseSeriesEnter: false,
+                isMouseFilmsEnter: false,
+                isMouseGenreEnter: true,
+              })
+            }
+            onMouseLeave={() =>
+              setIsMouseEnter({ ...isMouseEnter, isMouseGenreEnter: false })
+            }
           >
             <NextLink href={`${router.asPath}`} passHref legacyBehavior>
-                <Link
+              <Link
                 sx={{
-                    "&:hover": {
+                  "&:hover": {
                     color: "#007aff",
-                    },
+                  },
                 }}
-                >
+              >
                 <Box display="flex">
-                    <Typography
+                  <Typography
                     variant="h6"
                     component="h6"
                     fontWeight={400}
                     fontSize={15}
-                    >
+                  >
                     Generos
-                    </Typography>
-                    <IconButton>
+                  </Typography>
+                  <IconButton>
                     <KeyboardArrowDownOutlined
-                        fontSize="small"
-                        sx={{
+                      fontSize="small"
+                      sx={{
                         color: "blue",
                         mt: "-5px",
                         ml: "-8px",
-                        }}
+                      }}
                     />
-                    </IconButton>
+                  </IconButton>
                 </Box>
-                </Link>
+              </Link>
             </NextLink>
             <GenreMenu isOpen={isMouseEnter.isMouseGenreEnter} />
           </Box>
-          <Box  
-            onMouseEnter={() => setIsMouseEnter({ isMouseSeriesEnter:true,isMouseFilmsEnter:false, isMouseGenreEnter: false })}
-            onMouseLeave={() => setIsMouseEnter({ ...isMouseEnter, isMouseSeriesEnter: false })}
+          <Box
+            onMouseEnter={() =>
+              setIsMouseEnter({
+                isMouseSeriesEnter: true,
+                isMouseFilmsEnter: false,
+                isMouseGenreEnter: false,
+              })
+            }
+            onMouseLeave={() =>
+              setIsMouseEnter({ ...isMouseEnter, isMouseSeriesEnter: false })
+            }
           >
             <NextLink href="/series" passHref legacyBehavior>
               <Link
@@ -214,9 +236,7 @@ export const Navbar = () => {
             disableUnderline
             value={input}
             onChange={handleChange}
-            onKeyDown={ press => press.key === "Enter" && onSubmit() }
-
-
+            onKeyDown={(press) => press.key === "Enter" && onSubmit()}
             sx={{
               color: "white",
               width: 180,
@@ -238,7 +258,7 @@ export const Navbar = () => {
             }}
             endAdornment={
               <InputAdornment position="end">
-                <IconButton onClick={onSubmit} >
+                <IconButton onClick={onSubmit}>
                   <SearchOutlined
                     fontSize="medium"
                     sx={{

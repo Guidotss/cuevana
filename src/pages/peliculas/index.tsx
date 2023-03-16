@@ -1,9 +1,9 @@
 import { GetStaticProps, NextPage } from "next";
 import NextLink from "next/link";
 import { Box, Grid, Link, Typography } from "@mui/material";
-import { FilmsLayout } from "@/components/layouts";
-import { TrendingResults,AxiosResponse } from "@/interfaces";
 import { filmsApi } from "@/api";
+import { FilmsLayout } from "@/components/layouts";
+import { TrendingResults, AxiosResponse } from "@/interfaces";
 import { FilmsInfoCard } from "@/components/movie";
 import { FilmsTrendingList } from "@/components/ui";
 
@@ -53,14 +53,14 @@ const FilmsPage: NextPage<Props> = ({ movies }) => {
               <Typography color="#b9c4d5">
                 En esta sección tendrás las últimas películas publicadas en
                 cuevana, cada vez que subimos una película nueva, aquí verás el
-                contenido más reciente y actualizado. Sin embargo, puedes visitar
-                la sección de peliculas
+                contenido más reciente y actualizado. Sin embargo, puedes
+                visitar la sección de peliculas
                 <NextLink href={`/peliculas`} passHref legacyBehavior>
                   <Link
                     fontWeight="bold"
                     sx={{
-                      ml:1,
-                      mr:1,
+                      ml: 1,
+                      mr: 1,
                       "&:hover": {
                         color: "#007aff",
                       },
@@ -74,7 +74,7 @@ const FilmsPage: NextPage<Props> = ({ movies }) => {
                   <Link
                     fontWeight="bold"
                     sx={{
-                      ml:1,
+                      ml: 1,
                       "&:hover": {
                         color: "#007aff",
                       },
@@ -100,7 +100,7 @@ const FilmsPage: NextPage<Props> = ({ movies }) => {
           </Grid>
         </Grid>
         <Grid item xs={12} md={2}>
-        <Box>
+          <Box>
             <Typography
               color="#8da0bc"
               variant="h5"

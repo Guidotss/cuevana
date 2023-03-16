@@ -1,6 +1,5 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { FormControl,MenuItem,InputLabel,Box,Select} from "@mui/material";
-import { SelectChangeEvent } from "@mui/material/Select";
 import { Season } from "@/interfaces";
 import { useSelect } from "@/hooks";
 

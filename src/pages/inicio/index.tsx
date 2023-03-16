@@ -5,8 +5,12 @@ import { Box, Button, Grid, Typography } from "@mui/material";
 import { FilmsLayout } from "@/components/layouts";
 import { filmsApi } from "@/api";
 import { AxiosResponse, Series, TrendingResults } from "@/interfaces";
-import { FilmsSelector,FilmsTrendingList,SeriesList,HeaderImage } from '@/components/ui';
-
+import {
+  FilmsSelector,
+  FilmsTrendingList,
+  SeriesList,
+  HeaderImage,
+} from "@/components/ui";
 
 interface Props {
   films: TrendingResults[];
@@ -14,15 +18,15 @@ interface Props {
 }
 
 const HomePage: NextPage<Props> = ({ films, series }) => {
-  
   const mostPopularFilm = films?.filter((film) => film.popularity > 100)[0];
-  const mostPopularSeries = series?.filter((serie) => serie.popularity > 100).slice(0, 4);
+  const mostPopularSeries = series
+    ?.filter((serie) => serie.popularity > 100)
+    .slice(0, 4);
   const router = useRouter();
-  
-  const navigate = (url:string) => {
-    router.push(`/${url}`); 
-  }
-    
+
+  const navigate = (url: string) => {
+    router.push(`/${url}`);
+  };
 
   return (
     <FilmsLayout title="Home - Guivana" pageDescription="Home - Guivana">
@@ -47,9 +51,9 @@ const HomePage: NextPage<Props> = ({ films, series }) => {
           Todas las peliculas de Guivana 3 Online Gratis
         </Typography>
       </Box>
-      <Box 
+      <Box
         sx={{
-          p:3
+          p: 3,
         }}
       >
         <Grid
@@ -107,42 +111,33 @@ const HomePage: NextPage<Props> = ({ films, series }) => {
           </Grid>
         </Grid>
         <Grid container>
-          <Grid 
-            item 
-            xs={12} 
+          <Grid
+            item
+            xs={12}
             md={9}
             sx={{
-              p:'0 40px',
-              ml:15,
-              mt:-3
+              p: "0 40px",
+              ml: 15,
+              mt: -3,
             }}
           >
-            <FilmsSelector/>
-            <Box
-              display="flex"
-              justifyContent="center"
-              width="85%"
-            >
+            <FilmsSelector />
+            <Box display="flex" justifyContent="center" width="85%">
               <Button
                 variant="contained"
                 fullWidth
                 sx={{
                   borderRadius: 10,
                   height: 50,
-                  backgroundColor:"#3d4f91"
+                  backgroundColor: "#3d4f91",
                 }}
-                onClick={() => navigate('peliculas')}
+                onClick={() => navigate("peliculas")}
               >
                 Cargar mas peliculas
               </Button>
             </Box>
-          </Grid>  
-          <Grid 
-            item
-            md={2}
-            ml={-15}
-
-          >
+          </Grid>
+          <Grid item md={2} ml={-15}>
             <Box>
               <Typography
                 color="#8da0bc"
@@ -154,10 +149,10 @@ const HomePage: NextPage<Props> = ({ films, series }) => {
               </Typography>
             </Box>
             <Box>
-              <FilmsTrendingList/>
+              <FilmsTrendingList />
             </Box>
           </Grid>
-        </Grid> 
+        </Grid>
       </Box>
     </FilmsLayout>
   );
@@ -185,5 +180,3 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 };
 
 export default HomePage;
-
-

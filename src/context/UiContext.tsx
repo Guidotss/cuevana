@@ -1,11 +1,10 @@
-import { createContext } from 'react';
+import { createContext } from "react";
 
 interface UiContextProps {
-    season:string ;
-    loading:boolean;
+  season: string;
+  loading: boolean;
 
-    setSeason: ( season:string ) => void;
+  setSeason: (season: string) => void;
 }
-
 
 export const UiContext = createContext({} as UiContextProps);

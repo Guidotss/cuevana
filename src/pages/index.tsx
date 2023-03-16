@@ -3,11 +3,10 @@ import Image from "next/image";
 
 import { Box, Link, Typography } from "@mui/material";
 import { FilmsLayout } from "@/components/layouts";
-import { HomeDataCard, InfoCard,FormFilms } from "@/components/ui";
-import { infoCardText } from '@/constants';
+import { HomeDataCard, InfoCard, FormFilms } from "@/components/ui";
+import { infoCardText } from "@/constants";
 
 const WelcomePage = () => {
-
   return (
     <FilmsLayout title="Welcome - Guivana" pageDescription="Welcome - Guivana">
       <Box sx={{ mt: 10 }}>
@@ -33,22 +32,21 @@ const WelcomePage = () => {
         </Box>
         <Box display="flex" alignItems="center" flexDirection="column">
           <FormFilms />
-          <NextLink href='/inicio' passHref legacyBehavior>
+          <NextLink href="/inicio" passHref legacyBehavior>
             <Link
               type="button"
               sx={{
                 backgroundColor: "#007aff",
                 borderRadius: 10,
-                mt:5,
+                mt: 5,
                 height: 60,
                 width: 220,
                 textAlign: "center",
-                
+
                 "&:hover": {
                   backgroundColor: "#007aff",
                 },
               }}
-
             >
               <Typography
                 variant="h3"
@@ -86,7 +84,11 @@ const WelcomePage = () => {
             Preguntas frecuentes
           </Typography>
           {infoCardText.map((item) => (
-            <InfoCard key={item.id} title={item.title} description={item.description} />
+            <InfoCard
+              key={item.id}
+              title={item.title}
+              description={item.description}
+            />
           ))}
         </Box>
         <Box textAlign="center" sx={{ mt: 9 }}>

@@ -4,8 +4,7 @@ import { Box, Grid, Link, Typography } from "@mui/material";
 import { filmsApi } from "@/api";
 import { Series, AxiosResponse } from "@/interfaces";
 import { FilmsLayout } from "@/components/layouts";
-import { SeriesPageList,SeriesTrendingList } from "@/components/series";
-
+import { SeriesPageList, SeriesTrendingList } from "@/components/series";
 
 interface Props {
   series: Series[];
@@ -13,7 +12,7 @@ interface Props {
   trendingWeek: Series[];
 }
 
-const UpcomingPage: NextPage<Props> = ({ series,trendingDay,trendingWeek }) => {
+const UpcomingPage: NextPage<Props> = ({ series,trendingDay,trendingWeek, }) => {
   return (
     <FilmsLayout
       title="Últimas series en estrenos - Guivana"

@@ -28,14 +28,14 @@ const searchPage: NextPage<Props> = ({ movies }) => {
       >
         Search
       </Typography>
-      <Grid 
-            container
-            spacing={2}
-            sx={{
-                p:3,
-                ml: 12,
-            }}
-        >
+      <Grid
+        container
+        spacing={2}
+        sx={{
+          p: 3,
+          ml: 12,
+        }}
+      >
         <Grid display="flex" flexWrap="wrap" item xs={12} md={9}>
           {movies.map((movie: TrendingResults) => {
             if (!movie.poster_path || !movie.release_date) return null;
@@ -50,12 +50,12 @@ const searchPage: NextPage<Props> = ({ movies }) => {
             variant="h5"
             component="h2"
             sx={{
-                mt:-6
+              mt: -6,
             }}
           >
             Peliculas Destacadas
           </Typography>
-            <FilmsTrendingList />
+          <FilmsTrendingList />
         </Grid>
       </Grid>
     </FilmsLayout>
@@ -70,7 +70,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       `/search/multi?api_key=${process.env.API_KEY_TMDB}&query=${q}`
     );
 
-    if (!data){
+    if (!data) {
       return {
         notFound: true,
       };
@@ -79,7 +79,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     return {
       props: {
         movies: data.results,
-      }
+      },
     };
   } catch (err) {
     console.log(err);

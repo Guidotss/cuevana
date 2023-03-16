@@ -50,8 +50,8 @@ const UpcomingPage: NextPage<Props> = ({ movies }) => {
               <Typography color="#b9c4d5">
                 En esta sección tendrás las últimas películas publicadas en
                 cuevana, cada vez que subimos una película nueva, aquí verás el
-                contenido más reciente y actualizado. Sin embargo, puedes visitar
-                la sección de peliculas
+                contenido más reciente y actualizado. Sin embargo, puedes
+                visitar la sección de peliculas
               </Typography>
               <Box display="flex" gap={1}>
                 <NextLink href={`/peliculas`} passHref legacyBehavior>
@@ -96,7 +96,7 @@ const UpcomingPage: NextPage<Props> = ({ movies }) => {
           </Grid>
         </Grid>
         <Grid item xs={12} md={2}>
-        <Box>
+          <Box>
             <Typography
               color="#8da0bc"
               variant="h5"

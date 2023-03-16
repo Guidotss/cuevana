@@ -18,6 +18,7 @@ export const Footer = () => {
                     alt='logo'
                     width={60}
                     height={60}
+                    loading='eager'
                 />
                 <NextLink href="/" passHref legacyBehavior>
                     <Link>        

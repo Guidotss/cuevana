@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Box, Grid, Typography } from "@mui/material"
-import { useMovies } from '@/hooks/useMovies';
-import { TrendingResults } from '@/interfaces/trendingResults';
-import { FilmsInfoCard } from '../movie/FilmsInfoCard';
+import { useMovies } from '@/hooks';
+import { TrendingResults } from '@/interfaces';
+import { FilmsInfoCard } from '@/components/movie';
 
 
 
@@ -13,7 +13,7 @@ export const FilmsSelector = () => {
         trendsMovies: false,
         upcoming: false
     });
-    const [url, setUrl] = useState('movie/popular');
+    const [ url, setUrl ] = useState('movie/popular');
     const { movies } = useMovies(url,0);
 
   return (

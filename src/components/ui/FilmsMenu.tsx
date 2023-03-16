@@ -1,18 +1,21 @@
 import { FC } from "react";
 import NextLink from "next/link";
 import { Box, Link, List, ListItem, Typography } from "@mui/material";
-import { CategoryRounded } from "@mui/icons-material";
 
 interface Props {
   isOpen: boolean;
 }
 
-const filmsCatergories = ['Últimas publicadas', 'Estrenos', 'Tendencias semanal', 'Tendencias diaria'];
-
+const filmsCatergories = [
+  "Últimas publicadas",
+  "Estrenos",
+  "Tendencias semanal",
+  "Tendencias diaria",
+];
 
 export const FilmsMenu: FC<Props> = ({ isOpen }) => {
   return (
-    <Box sx={{mt:'-35px'}}>
+    <Box sx={{ mt: "-35px" }}>
       {isOpen && (
         <Box
           className="bounce-in"
@@ -37,31 +40,37 @@ export const FilmsMenu: FC<Props> = ({ isOpen }) => {
         >
           <List>
             {filmsCatergories.map((category, index) => (
-              <ListItem 
+              <ListItem
                 key={index}
                 sx={{
-                  borderRadius:1,
-                  '&:hover':{
+                  borderRadius: 1,
+                  "&:hover": {
                     backgroundColor: "#080f28",
-                  }
+                  },
                 }}
               >
-                <NextLink 
-                  href={`/peliculas/${category === 'Tendencias semanal' ? 'tendencias/semanal' : category === 'Tendencias diaria' ? 'tendencias/diaria' : category=== 'Últimas publicadas' ? '/' : category.toLowerCase()}`} 
-                  passHref legacyBehavior>
+                <NextLink
+                  href={`/peliculas/${
+                    category === "Tendencias semanal"
+                      ? "tendencias/semanal"
+                      : category === "Tendencias diaria"
+                      ? "tendencias/diaria"
+                      : category === "Últimas publicadas"
+                      ? "/"
+                      : category.toLowerCase()
+                  }`}
+                  passHref
+                  legacyBehavior
+                >
                   <Link
                     sx={{
-                      '&:hover':{
-                        color:'#007aff'
-                      }
+                      "&:hover": {
+                        color: "#007aff",
+                      },
                     }}
                   >
-                    <Typography 
-                      variant="body2"
-                      component="p"
-                      fontWeight={300}
-                    >
-                      { category }
+                    <Typography variant="body2" component="p" fontWeight={300}>
+                      {category}
                     </Typography>
                   </Link>
                 </NextLink>

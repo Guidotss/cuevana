@@ -12,7 +12,6 @@ interface Props {
   trendingMovies: TrendingResults[];
 }
 
-
 const TrendingPage: NextPage<Props> = ({ trendingMovies }) => {
   const router = useRouter();
   const trending = router.query.trending;
@@ -29,14 +28,10 @@ const TrendingPage: NextPage<Props> = ({ trendingMovies }) => {
           margin: "60px 150px",
         }}
       >
-        <Grid 
-          item 
-          xs={12} 
-          md={8}
-        >
+        <Grid item xs={12} md={8}>
           <Box
             sx={{
-              ml:10
+              ml: 10,
             }}
           >
             <Typography
@@ -86,10 +81,11 @@ const TrendingPage: NextPage<Props> = ({ trendingMovies }) => {
                 ) : (
                   <Box>
                     <Typography color="#b9c4d5">
-                      En esta sección te mostramos las películas que se encuentran
-                      en tendencia el día de hoy en Guivana, quiere decir que aquí
-                      verás las películas más populares en las últimas 24 horas.
-                      Recuerda que esta sección es diferente a las
+                      En esta sección te mostramos las películas que se
+                      encuentran en tendencia el día de hoy en Guivana, quiere
+                      decir que aquí verás las películas más populares en las
+                      últimas 24 horas. Recuerda que esta sección es diferente a
+                      las
                       <NextLink href={`/peliculas`} passHref legacyBehavior>
                         <Link
                           fontWeight="bold"
@@ -114,7 +110,7 @@ const TrendingPage: NextPage<Props> = ({ trendingMovies }) => {
             container
             sx={{
               mt: 3,
-              ml:10
+              ml: 10,
             }}
           >
             {trendingMovies.map((movie: TrendingResults) => (

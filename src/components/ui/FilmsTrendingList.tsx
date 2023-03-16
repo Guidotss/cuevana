@@ -1,11 +1,8 @@
-import NextLink from "next/link";
-import Image from "next/image";
-import { Box, Grid, Link, Typography } from "@mui/material";
 import { useState } from "react";
+import { Box,Typography } from "@mui/material";
 import { useMovies } from "@/hooks";
-import { TrendingResults } from "../../interfaces/trendingResults";
-import { PlayCircleOutlineOutlined } from "@mui/icons-material";
-import { FilmCard } from '../movie/FilmCard';
+import { TrendingResults } from "@/interfaces";
+import { FilmCard } from '@/components/movie';
 
 export const FilmsTrendingList = () => {
   

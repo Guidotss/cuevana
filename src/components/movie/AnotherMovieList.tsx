@@ -1,24 +1,21 @@
-import { FC } from "react"
-import NextLink from "next/link"
+import { FC } from "react";
+import Image from "next/image";
+import NextLink from "next/link";
+import { useRouter } from "next/router";
 import { PlayCircleOutlineOutlined } from "@mui/icons-material";
 import { Box, Link, Typography } from "@mui/material";
 import { TrendingResults } from "@/interfaces";
-import { useRouter } from "next/router";
-import Image from "next/image";
-
 
 interface Props {
-    anothersMovies: TrendingResults[];
+  anothersMovies: TrendingResults[];
 }
 
-export const AnotherMovieList:FC<Props> = ({ anothersMovies }) => {
+export const AnotherMovieList: FC<Props> = ({ anothersMovies }) => {
+  const router = useRouter();
 
-      
-    const router = useRouter();
-
-    const onNavigate = ( id:number ) => {
-        router.push(`/peliculas/${id}`)
-    }
+  const onNavigate = (id: number) => {
+    router.push(`/peliculas/${id}`);
+  };
 
   return (
     <Box>

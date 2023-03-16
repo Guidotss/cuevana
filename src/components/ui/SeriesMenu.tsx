@@ -1,7 +1,6 @@
 import { FC } from "react"
 import NextLink from 'next/link';
 import { Box, Link, List, ListItem, Typography } from "@mui/material"
-import { CategoryRounded } from "@mui/icons-material";
 
 interface Props {
     isOpen:boolean

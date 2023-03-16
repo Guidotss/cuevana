@@ -5,17 +5,16 @@ import { Series } from "@/interfaces";
 import { Box, Grid, Link, Typography } from "@mui/material";
 import { PlayCircleOutlineOutlined } from "@mui/icons-material";
 
-
-
 interface Props {
   trendingDay: Series[];
   trendingWeek: Series[];
 }
 type TimeWindow = "day" | "week";
 
-
-
-export const SeriesTrendingList: FC<Props> = ({ trendingDay, trendingWeek }) => {
+export const SeriesTrendingList: FC<Props> = ({
+  trendingDay,
+  trendingWeek,
+}) => {
   const [timeWindow, setTimeWindow] = useState<TimeWindow>("day");
 
   return (
@@ -78,7 +77,7 @@ export const SeriesTrendingList: FC<Props> = ({ trendingDay, trendingWeek }) => 
       </Grid>
       <Box
         sx={{
-            mt:-4
+          mt: -4,
         }}
       >
         {timeWindow === "day"
@@ -95,9 +94,9 @@ export const SeriesTrendingList: FC<Props> = ({ trendingDay, trendingWeek }) => 
                     "& > div > svg": {
                       display: "block",
                     },
-                    '& > div > a': {
-                        color: "#007aff",
-                    }
+                    "& > div > a": {
+                      color: "#007aff",
+                    },
                   },
                 }}
               >
@@ -130,23 +129,22 @@ export const SeriesTrendingList: FC<Props> = ({ trendingDay, trendingWeek }) => 
                     width: "50%",
                   }}
                 >
-                <NextLink
+                  <NextLink
                     href={`/series/${serie.id}`}
                     passHref
-                    legacyBehavior                
+                    legacyBehavior
                   >
                     <Link
-                        sx={{
-                            mt:1,
-                            mb:1,
-                            "&:hover": {
-                                color: "#007aff",
-                            },
-                        }}
+                      sx={{
+                        mt: 1,
+                        mb: 1,
+                        "&:hover": {
+                          color: "#007aff",
+                        },
+                      }}
                     >
-                        {serie.name}
+                      {serie.name}
                     </Link>
-
                   </NextLink>
                   <Box display="flex">
                     <Typography
@@ -194,9 +192,9 @@ export const SeriesTrendingList: FC<Props> = ({ trendingDay, trendingWeek }) => 
                     "& > div > svg": {
                       display: "block",
                     },
-                    '& > div > a': {
-                        color: "#007aff"
-                    }
+                    "& > div > a": {
+                      color: "#007aff",
+                    },
                   },
                 }}
               >
@@ -235,15 +233,15 @@ export const SeriesTrendingList: FC<Props> = ({ trendingDay, trendingWeek }) => 
                     legacyBehavior
                   >
                     <Link
-                        sx={{
-                            mt:1,
-                            mb:1,
-                            "&:hover": {
-                                color: "#007aff",
-                            },
-                        }}
+                      sx={{
+                        mt: 1,
+                        mb: 1,
+                        "&:hover": {
+                          color: "#007aff",
+                        },
+                      }}
                     >
-                        {serie.name}
+                      {serie.name}
                     </Link>
                   </NextLink>
                   <Box display="flex">

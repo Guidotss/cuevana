@@ -1,11 +1,14 @@
 import { GetServerSideProps, NextPage } from "next";
 import { Box, Grid, Typography } from "@mui/material";
 import { filmsApi } from "@/api";
-import { Movie,TrendingResults,AxiosResponse } from "@/interfaces";
+import { Movie, TrendingResults, AxiosResponse } from "@/interfaces";
 import { FilmsLayout } from "@/components/layouts";
-import { FilmsTrendingList,} from "@/components/ui";
-import { AnotherMovieList,HeaderMoviePage,SimilarMovieList } from "@/components/movie";
-
+import { FilmsTrendingList } from "@/components/ui";
+import {
+  AnotherMovieList,
+  HeaderMoviePage,
+  SimilarMovieList,
+} from "@/components/movie";
 
 interface Props {
   movie: Movie;
@@ -13,8 +16,7 @@ interface Props {
   anothersMovies: TrendingResults[];
 }
 
-const FilmPage: NextPage<Props> = ({movie,similarMovies,anothersMovies,}) => { 
-  
+const FilmPage: NextPage<Props> = ({ movie,similarMovies,anothersMovies, }) => {
   const similarMoviesSplited = similarMovies?.slice(0, 5);
   const anothersMoviesSplited = anothersMovies?.slice(0, 5);
 
@@ -24,17 +26,16 @@ const FilmPage: NextPage<Props> = ({movie,similarMovies,anothersMovies,}) => {
       pageDescription={movie.overview}
       imageFullUrl={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
     >
-      <HeaderMoviePage movie={movie}/> 
+      <HeaderMoviePage movie={movie} />
       <Grid
         container
         sx={{
           p: 3,
           mt: 10,
-          ml:10
+          ml: 10,
         }}
       >
-        <Grid 
-          item xs={12} md={8}>
+        <Grid item xs={12} md={8}>
           <Box>
             <Typography
               color="white"
@@ -91,8 +92,7 @@ const FilmPage: NextPage<Props> = ({movie,similarMovies,anothersMovies,}) => {
       </Grid>
     </FilmsLayout>
   );
-}
-
+};
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { id } = ctx.params as { id: string };
@@ -114,8 +114,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     const { data: anothers } = await filmsApi.get<AxiosResponse>(
       `movie/popular?api_key=${process.env.API_KEY_TMDB}&language=es-ES&page=1`
     );
-    
-    const anothersMovies = JSON.parse(JSON.stringify(anothers.results)); 
+
+    const anothersMovies = JSON.parse(JSON.stringify(anothers.results));
     return {
       props: {
         movie: movie || null,
