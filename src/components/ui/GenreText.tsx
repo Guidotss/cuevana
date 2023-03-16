@@ -7,7 +7,6 @@ interface Props {
 }
 
 export const GenreText: FC<Props> = ({ genre }) => {
-
   const genreDescription = genreText.filter((item) => item.name === genre);
 
   return (

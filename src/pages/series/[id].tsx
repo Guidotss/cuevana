@@ -1,17 +1,20 @@
 import { GetServerSideProps, NextPage } from "next";
-import { filmsApi } from "@/api";
-import { SerieById } from "@/interfaces";
 import { Box, Grid, Typography } from "@mui/material";
+import { filmsApi } from "@/api";
+import { SerieById,Series,AxiosResponse } from "@/interfaces";
 import { FilmsLayout } from "@/components/layouts";
-import { HeaderMoviePage } from "@/components/movie";
 import { BasicSelect } from "@/components/ui";
+import { HeaderMoviePage } from "@/components/movie";
+import { SeriesEpisodesList, SeriesTrendingList } from '@/components/series';
 
 interface Props {
   serie: SerieById;
   episodes: any;
+  trendingDay: Series[];
+  trendingWeek: Series[];
 }
 
-const SeriesPage: NextPage<Props> = ({ serie, episodes }) => {
+const SeriesPage: NextPage<Props> = ({ serie, episodes,trendingDay,trendingWeek }) => {
   return (
     <FilmsLayout
       title={`Ver ${serie.name} 2023 Online gratis - Guivana`}
@@ -20,14 +23,11 @@ const SeriesPage: NextPage<Props> = ({ serie, episodes }) => {
       <Box>
         <HeaderMoviePage serie={serie} />
       </Box>
-      <Grid
+      <Grid 
         container
-        spacing={2}
         sx={{
           display: "flex",
-          position: "absolute",
-          top: "60%",
-          left: "150px",
+          mt:-10
         }}
       >
         <Box
@@ -35,7 +35,7 @@ const SeriesPage: NextPage<Props> = ({ serie, episodes }) => {
           sx={{
             backgroundColor: "#141a32",
             borderRadius: 1,
-            mt: 25,
+            ml:10,
           }}
         >
           <Typography
@@ -51,11 +51,31 @@ const SeriesPage: NextPage<Props> = ({ serie, episodes }) => {
           <BasicSelect seasons={serie.seasons} />
         </Box>
       </Grid>
+          <Grid container>
+            <Grid 
+              item
+              xs={12}
+              md={9}
+            >
+              <SeriesEpisodesList episodes={ episodes } />
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              md={1}
+              sx={{
+                ml: 10,
+              }}
+            >
+              <SeriesTrendingList trendingDay={trendingDay} trendingWeek={trendingWeek}/>
+            </Grid>
+          </Grid>
     </FilmsLayout>
   );
 };
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
+
   const { id } = ctx.params as { id: string };
   const seasonsEpisodes = [];
 
@@ -75,10 +95,15 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       seasonsEpisodes.push(episodes);
     }
 
+    const { data:trendingDay } = await filmsApi.get<AxiosResponse>(`/trending/tv/day?api_key=${process.env.API_KEY_TMDB}&language=es-ES`); 
+    const { data:trendingWeek } = await filmsApi.get<AxiosResponse>(`trending/tv/week?api_key=${process.env.API_KEY_TMDB}&language=es-ES`);
+
     return {
       props: {
         serie: data,
         episodes: seasonsEpisodes,
+        trendingDay: trendingDay.results,
+        trendingWeek: trendingWeek.results,
       },
     };
   } catch (err) {

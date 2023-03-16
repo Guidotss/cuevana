@@ -44,7 +44,6 @@ const GenrePage: NextPage<Props> = ({ movies }) => {
               }}
             >
               Películas de {capitalize(genre as string)}
-              
             </Typography>
             <Box
               sx={{
@@ -55,7 +54,7 @@ const GenrePage: NextPage<Props> = ({ movies }) => {
               }}
               textAlign="start"
             >
-              <GenreText genre={ genre as string } />
+              <GenreText genre={genre as string} />
             </Box>
           </Box>
           <Grid

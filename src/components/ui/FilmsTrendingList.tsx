@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { Box,Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useMovies } from "@/hooks";
 import { TrendingResults } from "@/interfaces";
-import { FilmCard } from '@/components/movie';
+import { FilmCard } from "@/components/movie";
 
 export const FilmsTrendingList = () => {
-  
   const [url, setUrl] = useState("trending/movie/day");
   const [timeWindow, setTimeWindow] = useState({
     day: true,
@@ -13,7 +12,9 @@ export const FilmsTrendingList = () => {
   });
 
   const { movies } = useMovies(url, 0);
-  const mostPopularMovies = movies?.filter((movie) => movie.vote_average >= 7.2)?.splice(0, 5);
+  const mostPopularMovies = movies
+    ?.filter((movie) => movie.vote_average >= 7.2)
+    ?.splice(0, 5);
 
   return (
     <Box>
@@ -27,7 +28,10 @@ export const FilmsTrendingList = () => {
           }}
         >
           <Box
-            onClick={() =>{setTimeWindow({ day: true, week: false }); setUrl("trending/movie/day")}}
+            onClick={() => {
+              setTimeWindow({ day: true, week: false });
+              setUrl("trending/movie/day");
+            }}
             sx={{
               borderBottom: `${timeWindow.day ? "3px solid #edb709" : "none"}`,
               "&:hover": {
@@ -48,7 +52,10 @@ export const FilmsTrendingList = () => {
             </Typography>
           </Box>
           <Box
-            onClick={() =>{setTimeWindow({ day: false, week: true }); setUrl("trending/movie/week")}}
+            onClick={() => {
+              setTimeWindow({ day: false, week: true });
+              setUrl("trending/movie/week");
+            }}
             sx={{
               borderBottom: `${timeWindow.week ? "3px solid #edb709" : "none"}`,
               "&:hover": {

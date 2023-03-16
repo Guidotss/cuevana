@@ -11,8 +11,6 @@ interface Props {
 }
 
 export const HeaderMoviePage: FC<Props> = ({ movie, serie }) => {
-  console.log(serie);
-
   return (
     <Box display="flex">
       <Box
