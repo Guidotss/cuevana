@@ -21,17 +21,25 @@ const SeriesPage: NextPage<Props> = ({ series, trendingDay, trendingWeek }) => {
       <Box
         sx={{
           mt: 10,
-          ml: 20,
+          ml: {xs: 10, md: 7},
           mb: 3,
         }}
       >
-        <Typography variant="h4" component="h1" color="white" fontWeight="bold">
+        <Typography 
+          variant="h4" 
+          component="h1" 
+          color="white" 
+          fontWeight="bold"
+          sx={{
+            mb: 2,
+          }}
+        >
           Últimas series publicadas
         </Typography>
         <Box
           sx={{
             backgroundColor: "#141a32",
-            width: "66%",
+            width: { xs: "100%", md: "71%" },
             p: 2,
             borderRadius: 1,
           }}
@@ -74,7 +82,7 @@ const SeriesPage: NextPage<Props> = ({ series, trendingDay, trendingWeek }) => {
         </Box>
       </Box>
       <Grid container display="flex" justifyContent="center">
-        <Grid item xs={12} md={8}>
+        <Grid item xs={12} md={9}>
           <SeriesPageList series={series} />
         </Grid>
         <Grid 
@@ -85,7 +93,6 @@ const SeriesPage: NextPage<Props> = ({ series, trendingDay, trendingWeek }) => {
           <Box
             sx={{
               mt:-15,
-              ml:-5
             }}
           >
             <Typography
@@ -94,7 +101,7 @@ const SeriesPage: NextPage<Props> = ({ series, trendingDay, trendingWeek }) => {
               color="#8da0bc"
               fontWeight="bold"
               sx={{
-                mb:4
+                mb:4,
               }}
             >
               Series Destacadas

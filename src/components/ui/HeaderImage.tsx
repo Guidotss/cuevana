@@ -36,7 +36,6 @@ export const HeaderImage: FC<Props> = ({ film }) => {
           alt={film.title!}
           fill
           loading="lazy"
-          priority
           quality={100}
           style={{
             zIndex: -1,
