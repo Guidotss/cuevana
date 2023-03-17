@@ -1,6 +1,6 @@
 import { GetServerSideProps, NextPage } from "next";
 import { AxiosResponse, TrendingResults } from "@/interfaces";
-import { Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { filmsApi } from "@/api";
 import { FilmsInfoCard } from "@/components/movie";
 import { FilmsLayout } from "@/components/layouts";
@@ -22,8 +22,8 @@ const searchPage: NextPage<Props> = ({ movies }) => {
         fontWeight="bold"
         color="white"
         sx={{
-          ml: 20,
           mt: 5,
+          ml: 5,
         }}
       >
         Search
@@ -33,13 +33,11 @@ const searchPage: NextPage<Props> = ({ movies }) => {
         spacing={2}
         sx={{
           p: 3,
-          ml: 12,
         }}
       >
-        <Grid display="flex" flexWrap="wrap" item xs={12} md={9}>
+        <Grid display="flex" flexWrap="wrap" item xs={12} md={10}>
           {movies.map((movie: TrendingResults) => {
             if (!movie.poster_path || !movie.release_date) return null;
-
             return <FilmsInfoCard key={movie.id} movie={movie} />;
           })}
         </Grid>
@@ -49,13 +47,22 @@ const searchPage: NextPage<Props> = ({ movies }) => {
             fontWeight="bold"
             variant="h5"
             component="h2"
+            width={250}
             sx={{
               mt: -6,
+              ml:-8,
+              mb:2,
             }}
           >
             Peliculas Destacadas
           </Typography>
-          <FilmsTrendingList />
+          <Box
+            sx={{
+              ml:-10,
+            }}
+          >
+            <FilmsTrendingList />
+          </Box>
         </Grid>
       </Grid>
     </FilmsLayout>
